@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jkwong5/ParkingHOS/issues"
   },
-  "homepage": "https://github.com/jkwong5/ParkingHOS#readme"
+  "homepage": "https://github.com/jkwong5/ParkingHOS#readme",
+  "dependencies": {
+    "express-request-proxy": "^2.0.0"
+  }
 }
