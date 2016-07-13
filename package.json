@@ -1,0 +1,24 @@
+{
+  "name": "latfa",
+  "version": "1.0.0",
+  "description": "Parking Hall of Shame (Seattle 301n3 Final Project)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkwong5/ParkingHOS.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jkwong5/ParkingHOS/issues"
+  },
+  "homepage": "https://github.com/jkwong5/ParkingHOS#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-request-proxy": "^2.0.0"
+  }
+}
