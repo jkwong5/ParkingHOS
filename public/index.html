@@ -16,6 +16,53 @@
     <script src="vendor/scripts/jquery-autobars.js"></script>
     <script src="vendor/scripts/marked.js"></script>
     <script src="vendor/scripts/page.js"></script>
+    <!-- handlebar template script for hall of shame -->
+    <script id="blog-template" type="text/x-handlebars-template">
+      <article>
+        <time datetime="2000-01-01">{{time}}</time>
+        <ul>
+          <li><a class="plateUrl" href='#'>{{plate}}</a></li>
+          <li><a class="stateUrl" href='#'>{{state}}</a></li>
+          <li><a class="zipUrl" href='#'>{{zip}}</a></li>
+          <li><a class="makeUrl" href='#'>{{make}}</a></li>
+          <li><a class="modelUrl" href='#'>{{model}}</a></li>
+        </ul>
+        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
+        <hr>
+      </article>
+    </script>
+    <!-- handlebar template script for leaderboard-->
+    <script id="leaderboard-template" type="text/x-handlebars-template">
+      <article>
+        <ul>
+          <li><a class="plateUrl" href='#'>{{plate}}</a></li>
+          <li><a class="stateUrl" href='#'>{{state}}</a></li>
+          <li><a class="zipUrl" href='#'>{{zip}}</a></li>
+          <li><a class="makeUrl" href='#'>{{make}}</a></li>
+          <li><a class="modelUrl" href='#'>{{model}}</a></li>
+          <li>{{count}}</li>
+        </ul>
+        <br>
+      </article>
+    </script>
+    <!-- handlebar template script for license plate search results-->
+    <script id="plateResults-template" type="text/x-handlebars-template">
+      <article>
+        <p>{{count}} results for {{plate}}</p>
+        <time datetime="2000-01-01">{{time}}</time>
+        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
+        <hr>
+      </article>
+    </script>
+    <!-- handlebar template script for zip search-->
+    <script id="zipResults-template" type="text/x-handlebars-template">
+      <article>
+        <p>{{count}} results for {{zip}}</p>
+        <time datetime="2000-01-01">{{time}}</time>
+        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
+        <hr>
+      </article>
+    </script>
   </head>
   <body>
     <header>
@@ -29,10 +76,43 @@
     </header>
 
     <main>
+      <section id="blog" class="tab-content">
+        <h3>Hall of Shame!</h3>
+        <div id="blogData"></div>
+      </section>
+      <section id="leaderboard" class="tab-content">
+        <h3>Top Space Invaders Leaderboard!</h3>
+        <div id="leaderboardData"></div>
+      </section>
+      <section id="results" class="tab-content">
+        <h3>Search Results</h3>
+        <div id="plateResultsData"></div>
+        <div id="zipResultsData"></div>
+      </section>
+      <section id="search" class="tab-content">
+        <div id="searchMenu">
+          <h3>Search an Invader</h3>
+          <form action="#" id="searchForm">
+            <p>Search a repeat offender!</p>
+            <h4>Search By</h4>
+            <select name="make" id="makeFilter" >
+              <option value="">-- Make --</option>
+            </select>
+            <select name="model" id="modelFilter">
+              <option value="">-- Model --</option>
+            </select><br>
+            <input type="text" id="plateField" placeholder="License Plate Number">
+            <h4>Or</h4>
+            <input type="text" id="zipField" placeholder="Zip Code"><br>
+            <input type="submit" id="submitBtn" value="Search" />
+          </form>
+        </div>
+      </section>
 
     </main>
 
     <footer>
+      <p>Space Invaders &copy; <span id="year"></span></p>
     </footer>
     <script type="text/javascript" src="scripts/app.js"></script>
   </body>
