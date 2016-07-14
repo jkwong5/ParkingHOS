@@ -1,10 +1,10 @@
 (function(module) {
 
   index.renderSearchPage = function () {
-    $('#leaderboard, #blog, #results').hide();
+    $('#leaderboard, #blog, #results, #post').hide();
     $('#search').show();
-    var blogSuccess = 'I am showing the the Search!';
-    $('#search').append('<h1>' + blogSuccess + '</h1>');
+    var searchSuccess = 'I am showing the the Search!';
+    $('#search').append('<h1>' + searchSuccess + '</h1>')
   };
 
 })(window);
