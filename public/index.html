@@ -2,39 +2,194 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Parking Hall of Shame</title>
+    <title>Space Invaders!</title>
     <meta name="viewport" content="initial-scale=1 , width=device-width">
-    <link rel="stylesheet" type="text/css" href="vendor/styles/normalize.css">
+     <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/layout.css">
     <link rel="stylesheet" type="text/css" href="styles/module.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js" charset="utf-8"></script>
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
-    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="styles/state.css">
+    <link rel="stylesheet" type="text/css" href="styles/theme.css">
+    <script src="vendor/scripts/handlebars.js"></script>
+    <script src="vendor/scripts/highlight.pack.js"></script>
+    <script src="vendor/scripts/jquery-3.0.0.min.js"></script>
+    <script src="vendor/scripts/jquery-autobars.js"></script>
+    <script src="vendor/scripts/marked.js"></script>
+    <script src="vendor/scripts/page.js"></script>
+    <!-- handlebar template script for hall of shame -->
+    <script id="blog-template" type="text/x-handlebars-template">
+      <article>
+        <time datetime="2000-01-01">{{time}}</time>
+        <ul>
+          <li><a class="plateUrl" href='#'>{{plate}}</a></li>
+          <li><a class="stateUrl" href='#'>{{state}}</a></li>
+          <li><a class="zipUrl" href='#'>{{zip}}</a></li>
+          <li><a class="makeUrl" href='#'>{{make}}</a></li>
+          <li><a class="modelUrl" href='#'>{{model}}</a></li>
+        </ul>
+        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
+        <hr>
+      </article>
+    </script>
+    <!-- handlebar template script for leaderboard-->
+    <script id="leaderboard-template" type="text/x-handlebars-template">
+      <article>
+        <ul>
+          <li><a class="plateUrl" href='#'>{{plate}}</a></li>
+          <li><a class="stateUrl" href='#'>{{state}}</a></li>
+          <li><a class="zipUrl" href='#'>{{zip}}</a></li>
+          <li><a class="makeUrl" href='#'>{{make}}</a></li>
+          <li><a class="modelUrl" href='#'>{{model}}</a></li>
+          <li>{{count}}</li>
+        </ul>
+        <br>
+      </article>
+    </script>
+    <!-- handlebar template script for license plate search results-->
+    <script id="plateResults-template" type="text/x-handlebars-template">
+      <article>
+        <p>{{count}} results for {{plate}}</p>
+        <time datetime="2000-01-01">{{time}}</time>
+        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
+        <hr>
+      </article>
+    </script>
+    <!-- handlebar template script for zip search-->
+    <script id="zipResults-template" type="text/x-handlebars-template">
+      <article>
+        <p>{{count}} results for {{zip}}</p>
+        <time datetime="2000-01-01">{{time}}</time>
+        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
+        <hr>
+      </article>
+    </script>
   </head>
-  <body>
+  <body class="body">
     <header>
+      <h1 class="header">Space Invaders</h1>
       <nav class="nav">
         <ul>
-          <li class="tab" data-tab="submit"><a href="/">Shame a Driver!</a></li>
-          <li class="tab" data-tab="blog"><a href="/blog">Hall of Shame!</a></li>
-          <li class="tab" data-tab="search"><a href="/search">Search a Driver!</a></li>
+          <li class="tab" data-tab="submit"><a href="/">Shame!</a></li>
+          <li class="tab" data-tab="blog"><a href="/blog">Leaderboard</a></li>
+          <li class="tab" data-tab="search"><a href="/search">Search</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
+      <section id="blog" class="tab-content">
+        <h3>Hall of Shame!</h3>
+        <select name="make" id="makeFilter" >
+          <option value="">-- Make --</option>
+        </select>
+        <select name="model" id="modelFilter">
+          <option value="">-- Model --</option>
+        </select><br>
+        <div id="blogData"></div>
+      </section>
+      <section id="post" class="tab-content">
+        <div id="postMenu">
+          <h3>Post an Invader</h3>
+          <form action="#" id="postForm">
+            <select name="state" id="stateField" >
+              <option value="">-- State --</option>
+              <option value="al">Alabama</option>
+              <option value="ak">Alaska</option>
+              <option value="az">Arizona</option>
+              <option value="ar">Arkansas</option>
+              <option value="ca">California</option>
+              <option value="co">Colorado</option>
+              <option value="ct">Connecticut</option>
+              <option value="de">Delaware</option>
+              <option value="fl">Florida</option>
+              <option value="ga">Georgia</option>
+              <option value="hi">Hawaii</option>
+              <option value="id">Idaho</option>
+              <option value="il">Illinois</option>
+              <option value="in">Indiana</option>
+              <option value="ia">Iowa</option>
+              <option value="ks">Kansas</option>
+              <option value="ky">Kentucky</option>
+              <option value="la">Louisiana</option>
+              <option value="me">Maine</option>
+              <option value="md">Maryland</option>
+              <option value="ma">Massachusetts</option>
+              <option value="mi">Michigan</option>
+              <option value="mn">Minnesota</option>
+              <option value="ms">Mississippi</option>
+              <option value="mo">Missouri</option>
+              <option value="mt">Montana</option>
+              <option value="ne">Nebraska</option>
+              <option value="nv">Nevada</option>
+              <option value="nh">New Hampshire</option>
+              <option value="nj">New Jersey</option>
+              <option value="nm">New Mexico</option>
+              <option value="ny">New York</option>
+              <option value="nc">North Carolina</option>
+              <option value="nd">North Dakota</option>
+              <option value="oh">Ohio</option>
+              <option value="or">Oregon</option>
+              <option value="pa">Pennsylvania</option>
+              <option value="ri">Rhode Island</option>
+              <option value="sc">South Carolina</option>
+              <option value="sd">South Dakota</option>
+              <option value="tn">Tennessee</option>
+              <option value="tx">Texas</option>
+              <option value="ut">Utah</option>
+              <option value="vt">Vermont</option>
+              <option value="va">Virginia</option>
+              <option value="wa">Washington</option>
+              <option value="wv">West Virginia</option>
+              <option value="wi">Wisconsin</option>
+              <option value="wy">Wyoming</option>
+            </select>
+            <br>
+            <input type="text" id="plateField" placeholder="License Plate Number">
+            <br>
+            <select name="make" id="makeField" >
+              <option value="">-- Make --</option>
+            </select>
+            <select name="model" id="modelField">
+              <option value="">-- Model --</option>
+            </select><br>
+            <input type="text" id="zipField" placeholder="Zip Code"><br>
+            <input type="submit" id="submitBtn" value="Submit" />
+          </form>
+        </div>
+      </section>
+      <section id="leaderboard" class="tab-content">
+        <h3>Top Space Invaders Leaderboard!</h3>
+        <div id="leaderboardData"></div>
+      </section>
+      <section id="results" class="tab-content">
+        <h3>Search Results</h3>
+        <div id="plateResultsData"></div>
+        <div id="zipResultsData"></div>
+      </section>
+      <section id="search" class="tab-content">
+        <div id="searchMenu">
+          <h3>Search an Invader</h3>
+          <form action="#" id="searchForm">
+            <p>Search a repeat offender!</p>
+            <h4>Search By</h4>
+            <select name="state" id="searchState" >
+              <option value="">-- State --</option>
+            </select>
+            <br>
+            <input type="text" id="searchPlate" placeholder="License Plate Number">
+            <h4>Or</h4>
+            <input type="text" id="searchZip" placeholder="Zip Code"><br>
+            <input type="submit" id="searchBtn" value="Search" />
+          </form>
+        </div>
+      </section>
 
     </main>
 
     <footer>
+      <p>Space Invaders &copy; <span id="year"></span></p>
     </footer>
-    <script type="text/javascript" src="scripts/apps.js"></script>
-    <script type="text/javascript" src="scripts/firebase.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
   </body>
 
 </html>
