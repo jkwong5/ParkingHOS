@@ -70,7 +70,7 @@
       <nav class="nav">
         <ul>
           <li class="tab" data-tab="blog"><a href="/">Leaderboard</a></li>
-          <li class="tab" data-tab="submit"><a href="/report">Shame!</a></li>
+          <li class="tab" data-tab="submit"><a href="/post">Shame!</a></li>
           <li class="tab" data-tab="search"><a href="/search">Search</a></li>
         </ul>
       </nav>
@@ -87,76 +87,6 @@
         </select><br>
         <div id="blogData"></div>
       </section>
-      <section id="post" class="tab-content">
-        <div id="postMenu">
-          <h3>Post an Invader</h3>
-          <form action="#" id="postForm">
-            <select name="state" id="stateField" >
-              <option value="">-- State --</option>
-              <option value="al">Alabama</option>
-              <option value="ak">Alaska</option>
-              <option value="az">Arizona</option>
-              <option value="ar">Arkansas</option>
-              <option value="ca">California</option>
-              <option value="co">Colorado</option>
-              <option value="ct">Connecticut</option>
-              <option value="de">Delaware</option>
-              <option value="fl">Florida</option>
-              <option value="ga">Georgia</option>
-              <option value="hi">Hawaii</option>
-              <option value="id">Idaho</option>
-              <option value="il">Illinois</option>
-              <option value="in">Indiana</option>
-              <option value="ia">Iowa</option>
-              <option value="ks">Kansas</option>
-              <option value="ky">Kentucky</option>
-              <option value="la">Louisiana</option>
-              <option value="me">Maine</option>
-              <option value="md">Maryland</option>
-              <option value="ma">Massachusetts</option>
-              <option value="mi">Michigan</option>
-              <option value="mn">Minnesota</option>
-              <option value="ms">Mississippi</option>
-              <option value="mo">Missouri</option>
-              <option value="mt">Montana</option>
-              <option value="ne">Nebraska</option>
-              <option value="nv">Nevada</option>
-              <option value="nh">New Hampshire</option>
-              <option value="nj">New Jersey</option>
-              <option value="nm">New Mexico</option>
-              <option value="ny">New York</option>
-              <option value="nc">North Carolina</option>
-              <option value="nd">North Dakota</option>
-              <option value="oh">Ohio</option>
-              <option value="or">Oregon</option>
-              <option value="pa">Pennsylvania</option>
-              <option value="ri">Rhode Island</option>
-              <option value="sc">South Carolina</option>
-              <option value="sd">South Dakota</option>
-              <option value="tn">Tennessee</option>
-              <option value="tx">Texas</option>
-              <option value="ut">Utah</option>
-              <option value="vt">Vermont</option>
-              <option value="va">Virginia</option>
-              <option value="wa">Washington</option>
-              <option value="wv">West Virginia</option>
-              <option value="wi">Wisconsin</option>
-              <option value="wy">Wyoming</option>
-            </select>
-            <br>
-            <input type="text" id="plateField" placeholder="License Plate Number">
-            <br>
-            <select name="make" id="makeField" >
-              <option value="">-- Make --</option>
-            </select>
-            <select name="model" id="modelField">
-              <option value="">-- Model --</option>
-            </select><br>
-            <input type="text" id="zipField" placeholder="Zip Code"><br>
-            <input type="submit" id="submitBtn" value="Submit" />
-          </form>
-        </div>
-      </section>
       <section id="leaderboard" class="tab-content">
         <h3>Top Space Invaders Leaderboard!</h3>
         <div id="leaderboardData"></div>
@@ -172,14 +102,14 @@
           <form action="#" id="searchForm">
             <p>Search a repeat offender!</p>
             <h4>Search By</h4>
-            <select name="state" id="searchState" >
+            <select name="state" id="stateFilter" >
               <option value="">-- State --</option>
             </select>
             <br>
-            <input type="text" id="searchPlate" placeholder="License Plate Number">
+            <input type="text" id="plateField" placeholder="License Plate Number">
             <h4>Or</h4>
-            <input type="text" id="searchZip" placeholder="Zip Code"><br>
-            <input type="submit" id="searchBtn" value="Search" />
+            <input type="text" id="zipField" placeholder="Zip Code"><br>
+            <input type="submit" id="submitBtn" value="Search" />
           </form>
         </div>
       </section>
@@ -191,6 +121,7 @@
     </footer>
     <script type="text/javascript" src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/controllers/home-controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/search-controller.js"></script>
     <script type="text/javascript" src="scripts/routes.js"></script>
   </body>
 
