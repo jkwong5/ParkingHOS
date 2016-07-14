@@ -1,9 +1,24 @@
 
+.header {
+  font-family: Lucida Console;
+}
+
+main{
+  background-color: #EDBB99;
+  margin: auto;
+  border-radius: 2em;
+  width: 90%;
+}
+
+section{
+  margin:auto;
+  padding: 5% 5% 5% 5%;
+}
+
 nav ul li {
   display: none;
 }
 
-/*do we want a hamburger?*/
 
 @media only screen and (min-width: 640px) {
 
@@ -15,4 +30,3 @@ nav ul li {
     border-radius: 1em;
     margin: auto
   }
-}
