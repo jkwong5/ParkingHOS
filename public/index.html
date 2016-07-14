@@ -144,7 +144,7 @@
               <option value="wy">Wyoming</option>
             </select>
             <br>
-            <input type="text" id="plateField" placeholder="License Plate Number">
+            <input type="text" id="plateField" maxlength="8" placeholder="License Plate Number">
             <br>
             <select name="make" id="makeField" >
               <option value="">-- Make --</option>
@@ -152,7 +152,7 @@
             <select name="model" id="modelField">
               <option value="">-- Model --</option>
             </select><br>
-            <input type="text" id="zipField" placeholder="Zip Code"><br>
+            <input type="file" name="pic" accept="image/*"><br>
             <input type="submit" id="submitBtn" value="Submit" />
           </form>
         </div>
@@ -178,7 +178,7 @@
             <br>
             <input type="text" id="searchPlate" placeholder="License Plate Number">
             <h4>Or</h4>
-            <input type="text" id="searchZip" placeholder="Zip Code"><br>
+            <input type="text" id="searchZip" maxlength="5" placeholder="Zip Code"><br>
             <input type="submit" id="searchBtn" value="Search" />
           </form>
         </div>
