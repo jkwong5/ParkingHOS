@@ -66,11 +66,11 @@
   </head>
   <body class="body">
     <header>
-      <h1 class="header">Space Invaders</h1>
+      <h1 class="header"><a href="/">Space Invaders</a></h1>
       <nav class="nav">
         <ul>
-          <li class="tab" data-tab="submit"><a href="/">Shame!</a></li>
-          <li class="tab" data-tab="blog"><a href="/blog">Leaderboard</a></li>
+          <li class="tab" data-tab="submit"><a href="/post">Shame!</a></li>
+          <li class="tab" data-tab="leaderboard"><a href="/leaderboard">Leaderboard</a></li>
           <li class="tab" data-tab="search"><a href="/search">Search</a></li>
         </ul>
       </nav>
@@ -78,7 +78,7 @@
 
     <main>
       <section id="blog" class="tab-content">
-        <h3>Hall of Shame!</h3>
+        <h3>Look at these assholes!</h3>
         <select name="make" id="makeFilter" >
           <option value="">-- Make --</option>
         </select>
@@ -190,6 +190,10 @@
       <p>Space Invaders &copy; <span id="year"></span></p>
     </footer>
     <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/controllers/home-controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/search-controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/post-controller.js"></script>
+    <script type="text/javascript" src="scripts/routes.js"></script>
   </body>
 
 </html>
