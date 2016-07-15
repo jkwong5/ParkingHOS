@@ -4,7 +4,7 @@
 
   index.renderHomePage = function () {
     if($('h1 p')) {
-      $('h1 p').empty() ;
+      $('h1 p').empty();
     }
     $('#leaderboard, #search, #results, #post').hide();
     $('#blog').show();
