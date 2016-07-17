@@ -2,6 +2,7 @@
 
   var Cars = function(instance) {
     this.dt = instance.time;
+    this.img_url = instance.img_url;
     this.lic_plate = instance.lic_plate;
     this.lic_state = instance.lic_state;
     this.make = instance.make;

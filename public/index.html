@@ -22,7 +22,7 @@
     <script id="blog-template" type="text/x-handlebars-template">
       <article>
         <time datetime="2000-01-01">{{time}}</time>
-        <!-- <img src='{{img}}'> -->
+        <img src='{{img_url}}'>
         <ul>
           <li><a class="plateUrl"><b>License Plate:</b> {{lic_plate}}</a></li>
           <li><a class="stateUrl"><b>State:</b> {{lic_state}}</a></li>
@@ -65,6 +65,9 @@
         <hr>
       </article>
     </script>
+  <script id = "option-template" type ="text/x-handlebars-template">
+    <option value = "{{val}}">{{val}}</option>
+  </script>
   </head>
   <body class="body">
     <header>
