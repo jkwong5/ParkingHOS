@@ -1,17 +1,15 @@
 (function(module) {
 
   var Cars = function(instance) {
-    this.time = instance.time;
-    this.img = instance.img;
-    this.plate = instance.plate;
-    this.state = instance.state;
-    this.zip = instance.zip;
+    this.dt = instance.time;
+    this.lic_plate = instance.lic_plate;
+    this.lic_state = instance.lic_state;
     this.make = instance.make;
     this.model = instance.model;
   };
 
   Cars.getData = function(ctx, next) {
-    $.getJSON('../vendor/data/dummyData.json', function (data) {
+    $.getJSON('/db/invaders', function (data) {
       data.forEach(function(car) {
         var cars = new Cars(car);
       });
