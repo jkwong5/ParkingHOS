@@ -1,5 +1,5 @@
 (function() {
-  page('/', index.renderHomePage);
+  page('/', index.renderHomePage, Cars.getData);
   page('/post', index.renderPostPage, index.renderUploadButton);
   page('/search', index.renderSearchPage);
   page('/leaderboard', index.renderLeaderPage);

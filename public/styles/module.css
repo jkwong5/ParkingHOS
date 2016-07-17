@@ -1,0 +1,13 @@
+#blogData img {
+  width: 50%;
+  padding: 1em;
+  border-radius: 2em;
+  min-width:220px;
+}
+
+#blogData h3 {
+  display: inline;
+  padding: 1em;
+  margin: auto;
+  padding-right: 8%
+}

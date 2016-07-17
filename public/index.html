@@ -22,14 +22,14 @@
     <script id="blog-template" type="text/x-handlebars-template">
       <article>
         <time datetime="2000-01-01">{{time}}</time>
+        <img src='{{img}}'>
         <ul>
-          <li><a class="plateUrl" href='#'>{{plate}}</a></li>
-          <li><a class="stateUrl" href='#'>{{state}}</a></li>
-          <li><a class="zipUrl" href='#'>{{zip}}</a></li>
-          <li><a class="makeUrl" href='#'>{{make}}</a></li>
-          <li><a class="modelUrl" href='#'>{{model}}</a></li>
+          <li><a class="plateUrl"><b>License Plate:</b> {{plate}}</a></li>
+          <li><a class="stateUrl"><b>State:</b> {{state}}</a></li>
+          <li><a class="zipUrl" href='#'><b>Zip Code:</b> {{zip}}</a></li>
+          <li><a class="makeUrl"><b>Make:</b> {{make}}</a></li>
+          <li><a class="modelUrl"><b>Model:</b> {{model}}</a></li>
         </ul>
-        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
         <hr>
       </article>
     </script>
@@ -37,11 +37,11 @@
     <script id="leaderboard-template" type="text/x-handlebars-template">
       <article>
         <ul>
-          <li><a class="plateUrl" href='#'>{{plate}}</a></li>
-          <li><a class="stateUrl" href='#'>{{state}}</a></li>
-          <li><a class="zipUrl" href='#'>{{zip}}</a></li>
-          <li><a class="makeUrl" href='#'>{{make}}</a></li>
-          <li><a class="modelUrl" href='#'>{{model}}</a></li>
+          <li><a class="plateUrl" href='#'>License plate #: {{plate}}</a></li>
+          <li><a class="stateUrl" href='#'>State: {{state}}</a></li>
+          <li><a class="zipUrl" href='#'>Zip Code: {{zip}}</a></li>
+          <li><a class="makeUrl" href='#'>Make: {{make}}</a></li>
+          <li><a class="modelUrl" href='#'>Model: {{model}}</a></li>
           <li>{{count}}</li>
         </ul>
         <br>
@@ -87,7 +87,8 @@
         <select name="model" id="modelFilter">
           <option value="">-- Model --</option>
         </select><br>
-        <div id="blogData"></div>
+        <div id="blogData">
+        </div>
       </section>
       <section id="post" class="tab-content">
         <div id="postMenu">
