@@ -3,6 +3,14 @@
   font-family: Lucida Console;
 }
 
+form {
+  padding: 2em;
+}
+
+select {
+  padding: 2em;
+}
+
 main{
   background-color: #EDBB99;
   margin: auto;
