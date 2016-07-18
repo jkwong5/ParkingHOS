@@ -22,7 +22,7 @@
     <script id="blog-template" type="text/x-handlebars-template">
       <article>
         <time datetime="2000-01-01">{{time}}</time>
-        <!-- <img src='{{img}}'> -->
+        <img src='{{img_url}}'>
         <ul>
           <li><a class="plateUrl"><b>License Plate:</b> {{lic_plate}}</a></li>
           <li><a class="stateUrl"><b>State:</b> {{lic_state}}</a></li>
@@ -65,6 +65,9 @@
         <hr>
       </article>
     </script>
+  <script id = "option-template" type ="text/x-handlebars-template">
+    <option value = "{{val}}">{{val}}</option>
+  </script>
   </head>
   <body class="body">
     <header>
@@ -148,20 +151,19 @@
             </select>
             <br>
             <input type="text" id="plateField" maxlength="8" placeholder="License Plate Number">
-            <br>
+            <br><br>
             <select name="make" id="makeField" >
               <option value="">-- Make --</option>
             </select>
             <select name="model" id="modelField">
               <option value="">-- Model --</option>
-            </select><br>
-            <input type="file" name="pic" accept="image/*"><br>
+            </select><br><br>
+            <div id = "imageWidget">
+              <a href="/post" id="upload_widget_opener"></a>
+            </div><br>
             <input type="submit" id="submitBtn" value="Submit" />
           </form>
         </div>
-        <div id = "imageWidget">
-          <a href="/post" id="upload_widget_opener"></a>
-          </div>
       </section>
       <section id="leaderboard" class="tab-content">
         <h3>Top Space Invaders Leaderboard!</h3>
@@ -200,6 +202,7 @@
     <script type="text/javascript" src="scripts/controllers/search-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/post-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/leader-controller.js"></script>
+    <script type="text/javascript" src="scripts/mmfilter.js"></script>
     <script type="text/javascript" src="scripts/routes.js"></script>
   </body>
 
