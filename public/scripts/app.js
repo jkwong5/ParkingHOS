@@ -34,7 +34,6 @@
         Cars.appendToBlog(data);
       });
     };
-    next();
   };
 
   Cars.appendToBlog = function(data) {

@@ -15,8 +15,6 @@
   };
 
   Filters.getData = function(ctx, next){
-    // $('#makeFilter').children().remove();
-    // $('#modelFilter').children().remove();
     if (localStorage.makeModel){
       Filters.loadAll(JSON.parse(localStorage.makeModel));
     } else {
@@ -45,6 +43,8 @@
 
     var makeText = '<option> --Make-- </option>';
     $('#makeFilter').append(makeText);
+    var modelText = '<option> --Model-- </option>';
+    $('#modelFilter').append(modelText);
     options.forEach(function(data){
       var optionTag = '<option value="' + data + '"id = "' + data + '">' + data + '</option>';
       $('#makeFilter').append(optionTag);
@@ -68,11 +68,6 @@
     });
   };
 
-  Filters.removeStuff = function(ctx, next) {
-    $('#modelFilter').children().remove();
-    next();
-  };
-
   Filters.populatePostModel = function() {
     $('#makeField').on('change', function(e) {
       modelArr = [];
@@ -88,6 +83,8 @@
       });
     });
   };
+
+  Filters.getData();
 
   module.Filters = Filters;
 
