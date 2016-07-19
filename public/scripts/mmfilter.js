@@ -24,6 +24,7 @@
         });
       }).done(function(){
         Filters.populateFilters();
+        Filters.populateModel();
       });
     }
   };
@@ -42,25 +43,23 @@
     console.log(options);
 
     options.forEach(function(data){
-      var optionTag = '<option value="' + data + '">' + data + '</option>';
+      var optionTag = '<option value="' + data + '"id = "' + data + '">' + data + '</option>';
       $('#makeFilter').append(optionTag);
     });
   };
 
   Filters.populateModel = function() {
-    $('#makeFilter').on('change', function() {
-      var modelArr = [];
-      $('#modelFilter').siblings().remove();
-      client.query('SELECT DISTINCT model FROM makeModel WHERE make = "' + $(this).val + '";',
-      // .on('row', function(row));
-      function(modelData) {
-        modelData.map(function(a){
-          modelArr.push(a.model);
-        });
-        modelArr.forEach(function(model){
-          var modelOption = '<option value="' + model + '">' + model + '</option>';
-          $('#modelFilter').append(modelOption);
-        });
+    $('#makeFilter').on('change', function(e) {
+      modelArr = [];
+      $('#modelFilter').children().remove();
+      Filters.make.forEach(function(instance, i) {
+        if (e.target.value === Filters.make[i].make) {
+          modelArr.push(Filters.make[i].model);
+        }
+      });
+      modelArr.forEach(function(model){
+        var modelOption = '<option value="' + model + '">' + model + '</option>';
+        $('#modelFilter').append(modelOption);
       });
     });
   };
