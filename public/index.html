@@ -97,7 +97,7 @@
         <div id="postMenu">
           <h3>Post an Invader</h3>
           <form action="#" id="postForm">
-            <select name="state" id="stateField" >
+            <select name="state" id="stateField" required>
               <option value="">-- State --</option>
               <option value="al">Alabama</option>
               <option value="ak">Alaska</option>
@@ -150,12 +150,12 @@
               <option value="wy">Wyoming</option>
             </select>
             <br>
-            <input type="text" id="plateField" maxlength="8" placeholder="License Plate Number">
+            <input type="text" id="plateField" maxlength="8" placeholder="License Plate Number" required>
             <br><br>
-            <select name="make" id="makeField" >
+            <select name="make" id="makeField" required >
               <option value="">-- Make --</option>
             </select>
-            <select name="model" id="modelField">
+            <select name="model" id="modelField" required>
               <option value="">-- Model --</option>
             </select><br><br>
             <div id = "imageWidget">
@@ -205,6 +205,7 @@
     <script type="text/javascript" src="scripts/controllers/leader-controller.js"></script>
     <script type="text/javascript" src="scripts/mmfilter.js"></script>
     <script type="text/javascript" src="scripts/search.js"></script>
+    <script type="text/javascript" src="scripts/post.js"></script>
     <script type="text/javascript" src="scripts/routes.js"></script>
   </body>
 
