@@ -27,6 +27,33 @@ app.get('/db/makeModel', function(req, res) {
   });
 });
 
+app.get('/postNew/', function(req, res) {
+
+  var dt = req.query.dt;
+  var licp = req.query.lp;
+  var lics = req.query.ls;
+  var make = req.query.ma;
+  var model = req.query.mo;
+  var lat = req.query.lat;
+  var lng = req.query.lng;
+  var img = req.query.img;
+
+  pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
+    console.log(err);
+
+    client.query('INSERT INTO invaders (dt, lic_plate, lic_state, make, model, lat, lng, img_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);', [dt, licp, lics, make, model, lat, lng, img], function(err, result) {
+      if (err) return console.error(err);
+      console.log(result.rows);
+      res.send('hello world');
+    });
+    client.query('select p_id from invaders order by p_id desc limit 1;', function(err, result) {
+      if (err) return console.error(err);
+      console.log(result.rows);
+      res.send(result.rows);
+    });
+  });
+});
+
 app.use(express.static(__dirname + '/public/'));
 
 app.get('/', function(req, res) {
