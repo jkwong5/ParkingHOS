@@ -25,7 +25,7 @@
         <img src='{{img_url}}'>
         <ul>
           <li><a class="plateUrl"><b>License Plate:</b> {{lic_plate}}</a></li>
-          <li><a class="stateUrl"><b>State:</b> {{lic_state}}</a></li>
+          <li><a class="stateUrl" value={{lic_state}}><b>State:</b> {{lic_state}}</a></li>
           <!-- <li><a class="zipUrl" href='#'><b>Zip Code:</b> {{zip}}</a></li> -->
           <li><a class="makeUrl"><b>Make:</b> {{make}}</a></li>
           <li><a class="modelUrl"><b>Model:</b> {{model}}</a></li>
@@ -190,6 +190,7 @@
             <input type="submit" id="searchBtn" value="Search" />
           </form>
         </div>
+        <div id = "searchResults"></div>
       </section>
 
     </main>
@@ -203,6 +204,7 @@
     <script type="text/javascript" src="scripts/controllers/post-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/leader-controller.js"></script>
     <script type="text/javascript" src="scripts/mmfilter.js"></script>
+    <script type="text/javascript" src="scripts/search.js"></script>
     <script type="text/javascript" src="scripts/routes.js"></script>
   </body>
 
