@@ -1,10 +1,11 @@
 (function(module){
 
-  var Search = function(instance){
-    this.state = instance.state;
-    this.plate = instance.plate;
-    this.zip = instance.zip;
-  };
+  var Search = {};
+  // function(instance){
+  //   this.state = instance.state;
+  //   this.plate = instance.plate;
+  //   this.zip = instance.zip;
+  // };
 
   Search.all = [];
 
@@ -13,7 +14,17 @@
     });
   };
 
-  Search.state = function(){
+  Search.populateFilters = function() {
+    $('#blogData article').each(function() {
+      var val = $(this).find('.stateUrl').text();
+      var optionTag = '<option value="' + val + '">' + val + '</option>';
+      if ($('#searchState option[value="' + val + '"]').length === 0) {
+        $('#searchState').append(optionTag);
+      }
+    });
+  };
+
+  Search.statePlate = function(){
     $('#searchBtn').on('submit', function(e){
       if ($('#searchState').val && $('#searchPlate').val){
         var state = $('#searchState').val;
@@ -29,5 +40,7 @@
 
     });
   };
+
+  module.Search = Search;
 
 })(window);
