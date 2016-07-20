@@ -70,7 +70,7 @@
     });
   };
 
-  Filters.populatePostModel = function() {
+  Filters.populatePostModel = function(ctx, next) {
     $('#makeField').on('change', function(e) {
       modelArr = [];
       $('#modelField').children().remove();
@@ -84,6 +84,7 @@
         $('#modelField').append(modelOption);
       });
     });
+    next();
   };
 
   Filters.getData();
