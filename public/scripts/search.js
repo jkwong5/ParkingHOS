@@ -6,7 +6,7 @@
 
   Search.populateFilters = function() {
     $('#blogData article').each(function() {
-      var val = $(this).find('.stateUrl').attr('value').text();
+      var val = $(this).find('.stateUrl').attr('value');
       var optionTag = '<option value="' + val + '">' + val + '</option>';
       if ($('#searchState option[value="' + val + '"]').length === 0) {
         $('#searchState').append(optionTag);
@@ -15,20 +15,24 @@
   };
 
   Search.statePlate = function(){
-    $('#searchBtn').on('submit', function(e){
-      if ($('#searchState').val && $('#searchPlate').val){
-        var state = $('#searchState').val;
-        var plate = $('#searchPlate').val;
-        $('#searchResults').hide();
-        var result = $.grep(localStorage.invaders, function(n, index){
-          console.log(state === localStorage.invaders.lic_state);
+    $('#searchBtn').on('click', function(e){
+      e.preventDefault();
+      var carArr = [];
+      if ($('#searchState').val() && $('#searchPlate').val()){
+        var state = $('#searchState').val();
+        var plate = $('#searchPlate').val();
+        $('#searchResults').empty();
+        Cars.all.forEach(function(instance, i) {
+          if (state === Cars.all[i].lic_state && plate === Cars.all[i].lic_plate) {
+            $('#searchResults').append('<img src = "' + Cars.all[i].img_url + '">' + '<br>');
+          }
         });
-        // $('#searchResults').find('li').val() === state;
-        $('#searchResults').append(result);
       }
-    // $('#blogData').find('li').val() === $('')
-
     });
+  };
+
+  Search.clearSearch = function() {
+    $('#searchResults').empty();
   };
 
   module.Search = Search;

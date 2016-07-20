@@ -25,6 +25,8 @@
       }).done(function(){
         Filters.populateFilters();
         Filters.populateModel();
+        Search.populateFilters();
+        Search.statePlate();
       });
     }
   };
