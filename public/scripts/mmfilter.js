@@ -30,6 +30,7 @@
   };
 
   Filters.populateFilters = function(){
+    $('#makeFilter').children().remove();
     var options,
       template = Handlebars.compile($('#option-template').html());
 
@@ -40,11 +41,14 @@
       return a;
     }, []);
 
-    console.log(options);
-
+    var makeText = '<option> --Make-- </option>';
+    $('#makeFilter').append(makeText);
+    var modelText = '<option> --Model-- </option>';
+    $('#modelFilter').append(modelText);
     options.forEach(function(data){
       var optionTag = '<option value="' + data + '"id = "' + data + '">' + data + '</option>';
       $('#makeFilter').append(optionTag);
+      $('#makeField').append(optionTag);
     });
   };
 
@@ -63,6 +67,24 @@
       });
     });
   };
+
+  Filters.populatePostModel = function() {
+    $('#makeField').on('change', function(e) {
+      modelArr = [];
+      $('#modelField').children().remove();
+      Filters.make.forEach(function(instance, i) {
+        if (e.target.value === Filters.make[i].make) {
+          modelArr.push(Filters.make[i].model);
+        }
+      });
+      modelArr.forEach(function(model){
+        var modelOption = '<option value="' + model + '">' + model + '</option>';
+        $('#modelField').append(modelOption);
+      });
+    });
+  };
+
+  Filters.getData();
 
   module.Filters = Filters;
 

@@ -1,22 +1,12 @@
 (function(module){
 
   var Search = {};
-  // function(instance){
-  //   this.state = instance.state;
-  //   this.plate = instance.plate;
-  //   this.zip = instance.zip;
-  // };
 
   Search.all = [];
 
-  Search.form = function(){
-    $('#searchForm').on('submit', function(e) {
-    });
-  };
-
   Search.populateFilters = function() {
     $('#blogData article').each(function() {
-      var val = $(this).find('.stateUrl').text();
+      var val = $(this).find('.stateUrl').attr('value').text();
       var optionTag = '<option value="' + val + '">' + val + '</option>';
       if ($('#searchState option[value="' + val + '"]').length === 0) {
         $('#searchState').append(optionTag);
