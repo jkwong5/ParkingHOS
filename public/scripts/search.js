@@ -24,11 +24,11 @@
         $('#searchResults').empty();
         Cars.all.forEach(function(instance, i) {
           if (state === Cars.all[i].lic_state && plate === Cars.all[i].lic_plate) {
-            if (typeof Cars.all[i].img_url !== 'undefined') {
-              $('#searchResults').append('<img src = "' + Cars.all[i].img_url + '">' + '<br>');
-            } else {
+            if (Cars.all[i].img_url === 'undefined') {
               var noImgText = 'There is no image of this asshole';
               $('#searchResults').append('<h2>' + noImgText + '</h2>');
+            } else {
+              $('#searchResults').append('<img src = "' + Cars.all[i].img_url + '">' + '<br>');
             }
           }
         });
