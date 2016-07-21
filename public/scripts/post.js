@@ -2,12 +2,8 @@
 
   var Post = {};
 
-  Post.hideWidget = function() {
-    $('#imageWidget').hide();
-  };
-
   Post.submitInvader = function() {
-    $('#submitBtn').on('click', function(e) {
+    $('#postForm').on('submit', function(e) {
       e.preventDefault();
       var ls = $('#stateField').val();
       console.log(ls);
@@ -21,6 +17,13 @@
       $('#imageWidget').show();
     });
   };
+
+  Post.getPicUrl = function () {
+    $('.button.upload_cropped').on('submit', function (e) {
+      console.log($('upload_widget_opener').cloud_name);
+    });
+  };
+  
   module.Post = Post;
   Post.submitInvader();
 
