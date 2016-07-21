@@ -45,12 +45,7 @@ app.get('/postNew/', function(req, res) {
       if (err) return console.error(err);
       console.log(result.rows);
       // res.send('hello world');
-    });
-    client.query('select p_id from invaders order by p_id desc limit 1;', function(err, result) {
-      if (err) return console.error(err);
-      console.log(result.rows);
-      res.send(result.rows);
-      console.log(res);
+      res.redirect('/');
     });
   });
 });
