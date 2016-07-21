@@ -23,8 +23,7 @@
         public_id: 'grouper_photo_pretty'
       },
     function(error, result) { console.log(error, result);
-      console.log(result['0'].url);
-      var img = result['0'].url;
+      index.img = result['0'].url;
     });
     next();
   };

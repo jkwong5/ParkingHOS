@@ -44,12 +44,13 @@ app.get('/postNew/', function(req, res) {
     client.query('INSERT INTO invaders (dt, lic_plate, lic_state, make, model, lat, lng, img_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);', [dt, licp, lics, make, model, lat, lng, img], function(err, result) {
       if (err) return console.error(err);
       console.log(result.rows);
-      res.send('hello world');
+      // res.send('hello world');
     });
     client.query('select p_id from invaders order by p_id desc limit 1;', function(err, result) {
       if (err) return console.error(err);
       console.log(result.rows);
       res.send(result.rows);
+      console.log(res);
     });
   });
 });

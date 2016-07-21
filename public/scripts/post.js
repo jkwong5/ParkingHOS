@@ -9,7 +9,9 @@
       var lp = $('#plateField').val();
       var ma = $('#makeField').val();
       var mo = $('#modelField').val();
-      window.location.assign('/postNew' + '?lp=' + lp + '&ls=' + ls + '&ma=' + ma + '&mo=' + mo);
+      var im = index.img;
+      window.location.assign('/postNew' + '?lp=' + lp + '&ls=' + ls + '&ma=' + ma + '&mo=' + mo + '&img=' + im);
+      window.location.assign('/');
     });
   };
 
@@ -18,6 +20,10 @@
       console.log($('upload_widget_opener').cloud_name);
     });
   };
+
+  // Post.reroute = function() {
+  //   window.location.assign('/');
+  // };
 
   module.Post = Post;
   Post.submitInvader();
