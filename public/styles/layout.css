@@ -3,6 +3,10 @@
   font-family: Lucida Console;
 }
 
+form {
+  padding: 2em;
+}
+
 main{
   background-color: #EDBB99;
   margin: auto;
@@ -30,3 +34,4 @@ nav ul li {
     border-radius: 1em;
     margin: auto
   }
+}

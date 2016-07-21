@@ -22,10 +22,10 @@
     <script id="blog-template" type="text/x-handlebars-template">
       <article>
         <time datetime="2000-01-01">{{time}}</time>
-        <!-- <img src='{{img}}'> -->
+        <img src='{{img_url}}'>
         <ul>
           <li><a class="plateUrl"><b>License Plate:</b> {{lic_plate}}</a></li>
-          <li><a class="stateUrl"><b>State:</b> {{lic_state}}</a></li>
+          <li><a class="stateUrl" value={{lic_state}}><b>State:</b> {{lic_state}}</a></li>
           <!-- <li><a class="zipUrl" href='#'><b>Zip Code:</b> {{zip}}</a></li> -->
           <li><a class="makeUrl"><b>Make:</b> {{make}}</a></li>
           <li><a class="modelUrl"><b>Model:</b> {{model}}</a></li>
@@ -65,14 +65,17 @@
         <hr>
       </article>
     </script>
+  <script id = "option-template" type ="text/x-handlebars-template">
+    <option value = "{{val}}">{{val}}</option>
+  </script>
   </head>
   <body class="body">
     <header>
       <h1 class="header"><a href="/">Space Invaders</a></h1>
       <nav class="nav">
         <ul>
-          <li class="tab" data-tab="submit"><a href="/post">Shame!</a></li>
-          <li class="tab" data-tab="leaderboard"><a href="/leaderboard">Leaderboard</a></li>
+          <li class="tab" data-tab="submit"><a href="/postNew/post">Shame!</a></li>
+          <!-- <li class="tab" data-tab="leaderboard"><a href="/leaderboard">Leaderboard</a></li> -->
           <li class="tab" data-tab="search"><a href="/search">Search</a></li>
         </ul>
       </nav>
@@ -94,7 +97,7 @@
         <div id="postMenu">
           <h3>Post an Invader</h3>
           <form action="#" id="postForm">
-            <select name="state" id="stateField" >
+            <select name="state" id="stateField" required>
               <option value="">-- State --</option>
               <option value="al">Alabama</option>
               <option value="ak">Alaska</option>
@@ -147,21 +150,20 @@
               <option value="wy">Wyoming</option>
             </select>
             <br>
-            <input type="text" id="plateField" maxlength="8" placeholder="License Plate Number">
-            <br>
-            <select name="make" id="makeField" >
+            <input type="text" id="plateField" maxlength="8" placeholder="License Plate Number" required>
+            <br><br>
+            <select name="make" id="makeField" required >
               <option value="">-- Make --</option>
             </select>
-            <select name="model" id="modelField">
+            <select name="model" id="modelField" required>
               <option value="">-- Model --</option>
-            </select><br>
-            <input type="file" name="pic" accept="image/*"><br>
+            </select><br><br>
+            <div id = "imageWidget">
+              <a href="/post" id="upload_widget_opener"></a>
+            </div><br>
             <input type="submit" id="submitBtn" value="Submit" />
           </form>
         </div>
-        <div id = "imageWidget">
-          <a href="/post" id="upload_widget_opener"></a>
-          </div>
       </section>
       <section id="leaderboard" class="tab-content">
         <h3>Top Space Invaders Leaderboard!</h3>
@@ -188,6 +190,7 @@
             <input type="submit" id="searchBtn" value="Search" />
           </form>
         </div>
+        <div id = "searchResults"></div>
       </section>
 
     </main>
@@ -200,6 +203,9 @@
     <script type="text/javascript" src="scripts/controllers/search-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/post-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/leader-controller.js"></script>
+    <script type="text/javascript" src="scripts/mmfilter.js"></script>
+    <script type="text/javascript" src="scripts/search.js"></script>
+    <script type="text/javascript" src="scripts/post.js"></script>
     <script type="text/javascript" src="scripts/routes.js"></script>
   </body>
 
