@@ -22,7 +22,7 @@
         cropping: 'server', 'folder': 'user_photos',
       },
     function(error, result) { console.log(error, result);
-      index.img = result['0'].url;
+      index.img = result['0'].secure_url;
     });
     next();
   };
