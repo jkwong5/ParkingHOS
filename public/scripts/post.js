@@ -5,8 +5,8 @@
   Post.submitInvader = function() {
     $('#postForm').on('submit', function(e) {
       e.preventDefault();
-      var ls = $('#stateField').val();
-      var lp = $('#plateField').val();
+      var ls = $('#stateField').val().toUpperCase();
+      var lp = $('#plateField').val().toUpperCase();
       var ma = $('#makeField').val();
       var mo = $('#modelField').val();
       var im = index.img;

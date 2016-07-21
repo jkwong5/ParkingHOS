@@ -6,7 +6,7 @@
 
   Search.populateFilters = function() {
     $('#blogData article').each(function() {
-      var val = $(this).find('.stateUrl').attr('value');
+      var val = $(this).find('.stateUrl').attr('value').toUpperCase();
       var optionTag = '<option value="' + val + '">' + val + '</option>';
       if ($('#searchState option[value="' + val + '"]').length === 0) {
         $('#searchState').append(optionTag);
@@ -19,8 +19,8 @@
       e.preventDefault();
       var carArr = [];
       if ($('#searchState').val() && $('#searchPlate').val()){
-        var state = $('#searchState').val();
-        var plate = $('#searchPlate').val();
+        var state = $('#searchState').val().toUpperCase();
+        var plate = $('#searchPlate').val().toUpperCase();
         $('#searchResults').empty();
         Cars.all.forEach(function(instance, i) {
           if (state === Cars.all[i].lic_state && plate === Cars.all[i].lic_plate) {

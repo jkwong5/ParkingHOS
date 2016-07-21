@@ -20,7 +20,6 @@
         cloud_name: 'htc5w5cys',
         upload_preset: 'dx9pzwds',
         cropping: 'server', 'folder': 'user_photos',
-        public_id: 'grouper_photo_pretty'
       },
     function(error, result) { console.log(error, result);
       index.img = result['0'].url;

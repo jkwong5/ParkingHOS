@@ -9,7 +9,7 @@ app.get('/db/invaders', function(req, res) {
   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
     console.log(err);
 
-    client.query('SELECT * FROM invaders', function(err, result) {
+    client.query('SELECT * FROM invaders ORDER BY p_id desc', function(err, result) {
       if (err) return console.error(err);
       res.send(result.rows);
     });
