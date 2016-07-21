@@ -33,7 +33,7 @@
       }).done(function(data) {
         Cars.appendToBlog(data);
       });
-    };
+    }
   };
 
   Cars.appendToBlog = function(data) {
