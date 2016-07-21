@@ -19,21 +19,18 @@
   };
 
   Cars.getData = function(ctx, next) {
-    if (localStorage.invaders) {
-      Cars.loadAll(JSON.parse(localStorage.invaders));
-      Cars.appendToBlog(Cars.all);
-    }
-    else {
-      $.getJSON('/db/invaders', function (data) {
-        data.forEach(function(car) {
-          var cars = new Cars(car);
-          var stringData = JSON.stringify(data);
-          localStorage.setItem('invaders', stringData);
-        });
-      }).done(function(data) {
-        Cars.appendToBlog(data);
+    localStorage.removeItem('invaders');
+    $.getJSON('/db/invaders', function (data) {
+      data.forEach(function(car) {
+        var cars = new Cars(car);
+        var stringData = JSON.stringify(data);
+        localStorage.setItem('invaders', stringData);
+        Cars.loadAll(JSON.parse(localStorage.invaders));
+        Cars.appendToBlog(Cars.all);
       });
-    }
+    }).done(function(data) {
+      Cars.appendToBlog(data);
+    });
   };
 
   Cars.appendToBlog = function(data) {
@@ -44,6 +41,7 @@
       $('#blogData').append(template(instance));
     });
   };
+
 
   module.Cars = Cars;
 
