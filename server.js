@@ -12,6 +12,7 @@ app.get('/db/invaders', function(req, res) {
     client.query('SELECT * FROM invaders ORDER BY p_id desc', function(err, result) {
       if (err) return console.error(err);
       res.send(result.rows);
+      client.end();
     });
   });
 });
@@ -23,6 +24,7 @@ app.get('/db/makeModel', function(req, res) {
     client.query('SELECT * FROM makeModel', function(err, result) {
       if (err) return console.error(err);
       res.send(result.rows);
+      client.end();
     });
   });
 });
@@ -45,6 +47,7 @@ app.get('/postNew/', function(req, res) {
       if (err) return console.error(err);
       console.log(result.rows);
       // res.send('hello world');
+      client.end();
       res.redirect('/');
     });
   });
