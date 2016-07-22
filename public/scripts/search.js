@@ -4,7 +4,7 @@
 
   Search.all = [];
 
-  Search.populateFilters = function(ctx, noImgText) {
+  Search.populateFilters = function(ctx, next) {
     $('#blogData article').each(function() {
       var val = $(this).find('.stateUrl').attr('value').toUpperCase();
       var optionTag = '<option value="' + val + '">' + val + '</option>';
@@ -12,7 +12,6 @@
         $('#searchState').append(optionTag);
       }
     });
-    next();
   };
 
   Search.statePlate = function() {
@@ -37,8 +36,9 @@
     });
   };
 
-  Search.clearSearch = function() {
+  Search.clearSearch = function(ctx, next) {
     $('#searchResults').empty();
+    next();
   };
 
   module.Search = Search;
