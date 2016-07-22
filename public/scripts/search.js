@@ -1,10 +1,10 @@
-(function(module){
+(function(module) {
 
   var Search = {};
 
   Search.all = [];
 
-  Search.populateFilters = function() {
+  Search.populateFilters = function(ctx, noImgText) {
     $('#blogData article').each(function() {
       var val = $(this).find('.stateUrl').attr('value').toUpperCase();
       var optionTag = '<option value="' + val + '">' + val + '</option>';
@@ -12,13 +12,14 @@
         $('#searchState').append(optionTag);
       }
     });
+    next();
   };
 
-  Search.statePlate = function(){
-    $('#searchBtn').on('click', function(e){
+  Search.statePlate = function() {
+    $('#searchBtn').on('click', function(e) {
       e.preventDefault();
       var carArr = [];
-      if ($('#searchState').val() && $('#searchPlate').val()){
+      if ($('#searchState').val() && $('#searchPlate').val()) {
         var state = $('#searchState').val().toUpperCase();
         var plate = $('#searchPlate').val().toUpperCase();
         $('#searchResults').empty();
