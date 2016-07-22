@@ -1,6 +1,6 @@
 
 .header {
-  font-family: Lucida Console;
+  font-family: '8-BIT';
 }
 
 form {
@@ -8,7 +8,7 @@ form {
 }
 
 main{
-  background-color: #EDBB99;
+  background-color: #F0E68C;
   margin: auto;
   border-radius: 2em;
   width: 90%;
@@ -33,5 +33,11 @@ nav ul li {
     background-color: #FFF;
     border-radius: 1em;
     margin: auto
+  }
+
+  .oldman {
+    background-image: url("../assets/oldman.png");
+    justify-content: flex-end;
+    align-items: center;
   }
 }

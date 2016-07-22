@@ -1,6 +1,12 @@
 html {
   font-size: 100%;
-  background: url("../../assets/background.jpg");
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 2px 2px 0 white;
+  background-color: black;
+}
+
+.header img{
+  max-width: 100%;
 }
 
 img{
@@ -14,3 +20,7 @@ ul{
 a, a:link, a:active{
   text-decoration: none;
 }
+
+@media only screen and (min-width: 640px) {
+
+  }

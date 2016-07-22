@@ -6,11 +6,12 @@
     $('#postForm').on('submit', function(e) {
       e.preventDefault();
       var ls = $('#stateField').val().toUpperCase();
-      var lp = $('#plateField').val().toUpperCase();
+      var lp = $('#plateField').val();
       var ma = $('#makeField').val();
       var mo = $('#modelField').val();
       var im = index.img;
       window.location.assign('/postNew' + '?lp=' + lp + '&ls=' + ls + '&ma=' + ma + '&mo=' + mo + '&img=' + im);
+      localStorage.removeItem('invaders');
     });
   };
 
