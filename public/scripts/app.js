@@ -33,7 +33,6 @@
     });
     next();
   };
-
   Cars.appendToBlog = function(data) {
     $('#blogData').empty();
     data.forEach(function(instance) {
@@ -42,7 +41,6 @@
       $('#blogData').append(template(instance));
     });
   };
-
 
   module.Cars = Cars;
 

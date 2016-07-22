@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>Space Invaders!</title>
     <meta name="viewport" content="initial-scale=1 , width=device-width">
-     <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/layout.css">
     <link rel="stylesheet" type="text/css" href="styles/module.css">
@@ -71,7 +72,7 @@
   </head>
   <body class="body">
     <header>
-      <h1 class="header"><a href="/">Space Invaders</a></h1>
+      <a href="/" class="header"><img src="../assets/SpaceInvadersLogo2.png"></a>
       <nav class="nav">
         <ul>
           <li class="tab" data-tab="submit"><a href="/postNew/post">Shame!</a></li>
@@ -92,6 +93,7 @@
         </select><br>
         <div id="blogData">
         </div>
+        <div class="oldman"></div>
       </section>
       <section id="post" class="tab-content">
         <div id="postMenu">
@@ -184,9 +186,9 @@
               <option value="">-- State --</option>
             </select>
             <br>
-            <input type="text" id="searchPlate" placeholder="License Plate Number">
-            <h4>Or</h4>
-            <input type="text" id="searchZip" maxlength="5" placeholder="Zip Code"><br>
+            <input type="text" id="searchPlate" placeholder="License Plate Number"><br>
+            <!-- <h4>Or</h4>
+            <input type="text" id="searchZip" maxlength="5" placeholder="Zip Code"><br> -->
             <input type="submit" id="searchBtn" value="Search" />
           </form>
         </div>
