@@ -1,6 +1,11 @@
 html {
   font-size: 100%;
-  background: url("../../assets/background.jpg");
+  font-family: 'Press Start 2P', cursive;
+  background-color: black;
+}
+
+.header{
+  font-family: 'Press Start 2P', cursive;
 }
 
 img{
@@ -14,3 +19,12 @@ ul{
 a, a:link, a:active{
   text-decoration: none;
 }
+
+@media only screen and (min-width: 700px) {
+  h1{
+    text-indent: -9999px;
+    background: url("../assets/SpaceInvadersLogo2.png");
+    background-repeat: no-repeat;
+    height: 3em;
+  }
+  }
