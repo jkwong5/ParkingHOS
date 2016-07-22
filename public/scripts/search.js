@@ -17,7 +17,7 @@
   Search.statePlate = function() {
     $('#searchBtn').on('click', function(e) {
       e.preventDefault();
-      var carArr = [];
+      var resultsArr = [];
       if ($('#searchState').val() && $('#searchPlate').val()) {
         var state = $('#searchState').val().toUpperCase();
         var plate = $('#searchPlate').val().toUpperCase();
@@ -26,12 +26,19 @@
           if (state === Cars.all[i].lic_state && plate === Cars.all[i].lic_plate) {
             if (Cars.all[i].img_url === 'undefined') {
               var noImgText = 'There is no image of this asshole';
-              $('#searchResults').append('<h2>' + noImgText + '</h2>');
+              resultsArr.push('<h2>' + noImgText + '</h2>');
             } else {
-              $('#searchResults').append('<img src = "' + Cars.all[i].img_url + '">' + '<br>');
+              resultsArr.push('<img src = "' + Cars.all[i].img_url + '">' + '<br>');
             }
           }
         });
+        if (resultsArr.length) {
+          resultsArr.forEach(function(instance) {
+            $('#searchResults').append(instance);
+          });
+        } else {
+          $('#searchResults').append('<h2>No assholes to see here</h2>');
+        }
       }
     });
   };
