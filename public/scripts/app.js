@@ -20,7 +20,7 @@
 
   Cars.getData = function(ctx, next) {
     localStorage.removeItem('invaders');
-    $.getJSON('/db/invaders', function (data) {
+    $.getJSON('/db/invaders', function(data) {
       data.forEach(function(car) {
         var cars = new Cars(car);
         var stringData = JSON.stringify(data);
@@ -31,12 +31,13 @@
     }).done(function(data) {
       Cars.appendToBlog(data);
     });
+    next();
   };
 
   Cars.appendToBlog = function(data) {
     $('#blogData').empty();
     data.forEach(function(instance) {
-      var source = $('#blog-template').html();  //template script grabbed
+      var source = $('#blog-template').html(); //template script grabbed
       var template = Handlebars.compile(source);
       $('#blogData').append(template(instance));
     });
