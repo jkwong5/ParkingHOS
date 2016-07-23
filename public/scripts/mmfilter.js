@@ -84,7 +84,6 @@
         $('#modelField').append(modelOption);
       });
     });
-    next();
   };
 
   Filters.getData();
