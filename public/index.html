@@ -18,49 +18,30 @@
     <script src="vendor/scripts/marked.js"></script>
     <script src="vendor/scripts/page.js"></script>
     <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-
     <!-- handlebar template script for hall of shame -->
     <script id="blog-template" type="text/x-handlebars-template">
       <article>
         <time datetime="2000-01-01">{{time}}</time>
         <img src='{{img_url}}'>
-        <ul>
+        <ul id = "lic_plt_list">
           <li><a class="plateUrl"><b>License Plate:</b> {{lic_plate}}</a></li>
+        </ul>
+        <ul id  = "state_plt_list">
           <li><a class="stateUrl" value={{lic_state}}><b>State:</b> {{lic_state}}</a></li>
-          <!-- <li><a class="zipUrl" href='#'><b>Zip Code:</b> {{zip}}</a></li> -->
+        </ul>
+        <ul id = "make_list">
           <li><a class="makeUrl"><b>Make:</b> {{make}}</a></li>
+        </ul>
+        <ul id = "moodel_list">
           <li><a class="modelUrl"><b>Model:</b> {{model}}</a></li>
         </ul>
         <hr>
-      </article>
-    </script>
-    <!-- handlebar template script for leaderboard-->
-    <script id="leaderboard-template" type="text/x-handlebars-template">
-      <article>
-        <ul>
-          <li><a class="plateUrl" href='#'>License plate #: {{plate}}</a></li>
-          <li><a class="stateUrl" href='#'>State: {{state}}</a></li>
-          <li><a class="zipUrl" href='#'>Zip Code: {{zip}}</a></li>
-          <li><a class="makeUrl" href='#'>Make: {{make}}</a></li>
-          <li><a class="modelUrl" href='#'>Model: {{model}}</a></li>
-          <li>{{count}}</li>
-        </ul>
-        <br>
       </article>
     </script>
     <!-- handlebar template script for license plate search results-->
     <script id="plateResults-template" type="text/x-handlebars-template">
       <article>
         <p>{{count}} results for {{plate}}</p>
-        <time datetime="2000-01-01">{{time}}</time>
-        <img src='{{img}}' style="width:50%;hight:45%;border:1px">
-        <hr>
-      </article>
-    </script>
-    <!-- handlebar template script for zip search-->
-    <script id="zipResults-template" type="text/x-handlebars-template">
-      <article>
-        <p>{{count}} results for {{zip}}</p>
         <time datetime="2000-01-01">{{time}}</time>
         <img src='{{img}}' style="width:50%;hight:45%;border:1px">
         <hr>
@@ -76,7 +57,6 @@
       <nav class="nav">
         <ul>
           <li class="tab" data-tab="submit"><a href="/postNew/post">Shame!</a></li>
-          <!-- <li class="tab" data-tab="leaderboard"><a href="/leaderboard">Leaderboard</a></li> -->
           <li class="tab" data-tab="search"><a href="/search">Search</a></li>
         </ul>
       </nav>
@@ -152,7 +132,7 @@
               <option value="wy">Wyoming</option>
             </select>
             <br>
-            <input type="text" id="plateField" maxlength="8" placeholder="License Plate Number" required>
+            <input type="text" id="plateField" maxlength="8" placeholder="Lic Plt #" required>
             <br><br>
             <select name="make" id="makeField" required >
               <option value="">-- Make --</option>
@@ -167,14 +147,9 @@
           </form>
         </div>
       </section>
-      <section id="leaderboard" class="tab-content">
-        <h3>Top Space Invaders Leaderboard!</h3>
-        <div id="leaderboardData"></div>
-      </section>
       <section id="results" class="tab-content">
         <h3>Search Results</h3>
         <div id="plateResultsData"></div>
-        <div id="zipResultsData"></div>
       </section>
       <section id="search" class="tab-content">
         <div id="searchMenu">
@@ -186,17 +161,13 @@
               <option value="">-- State --</option>
             </select>
             <br>
-            <input type="text" id="searchPlate" placeholder="License Plate Number"><br>
-            <!-- <h4>Or</h4>
-            <input type="text" id="searchZip" maxlength="5" placeholder="Zip Code"><br> -->
+            <input type="text" id="searchPlate" placeholder="Lic Plt #"><br>
             <input type="submit" id="searchBtn" value="Search" />
           </form>
         </div>
         <div id = "searchResults"></div>
       </section>
-
     </main>
-
     <footer>
       <p>Space Invaders &copy; <span id="year"></span></p>
     </footer>
@@ -210,5 +181,4 @@
     <script type="text/javascript" src="scripts/post.js"></script>
     <script type="text/javascript" src="scripts/routes.js"></script>
   </body>
-
 </html>
