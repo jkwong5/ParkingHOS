@@ -13,6 +13,7 @@ app.get('/db/invaders', function(req, res) {
       res.send(result.rows);
       client.end();
     });
+    done();
   });
 });
 
@@ -25,6 +26,7 @@ app.get('/db/makeModel', function(req, res) {
       res.send(result.rows);
       client.end();
     });
+    done();
   });
 });
 
@@ -49,6 +51,7 @@ app.get('/postNew/', function(req, res) {
       client.end();
       res.redirect('/');
     });
+    done();
   });
 });
 
