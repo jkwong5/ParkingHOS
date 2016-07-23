@@ -5,6 +5,11 @@ html {
   background-color: black;
 }
 
+.cloudinary-button{
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none;
+}
+
 .header img{
   max-width: 100%;
 }
