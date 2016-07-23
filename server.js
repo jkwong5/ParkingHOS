@@ -1,5 +1,4 @@
-var requestProxy = require('express-request-proxy'),
-  express = require('express'),
+var express = require('express'),
   cloudinary = require('cloudinary'),
   pg = require('pg'),
   port = process.env.PORT || 3000,

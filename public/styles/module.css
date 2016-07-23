@@ -2,7 +2,7 @@
   width: 50%;
   padding: 1em;
   border-radius: 2em;
-  min-width:220px;
+  min-width:180px;
 }
 
 #blogData h3 {
@@ -10,4 +10,11 @@
   padding: 1em;
   margin: auto;
   padding-right: 8%
+}
+
+#shameSign {
+  float: right;
+  max-width: 100%;
+  right: 2em;
+  bottom: 20%
 }
