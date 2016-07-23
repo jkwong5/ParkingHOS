@@ -12,8 +12,8 @@ app.get('/db/invaders', function(req, res) {
       if (err) return console.error(err);
       res.send(result.rows);
       client.end();
+      done();
     });
-    done();
   });
 });
 
@@ -25,8 +25,8 @@ app.get('/db/makeModel', function(req, res) {
       if (err) return console.error(err);
       res.send(result.rows);
       client.end();
+      done();
     });
-    done();
   });
 });
 
@@ -50,8 +50,8 @@ app.get('/postNew/', function(req, res) {
       // res.send('hello world');
       client.end();
       res.redirect('/');
+      done();
     });
-    done();
   });
 });
 
