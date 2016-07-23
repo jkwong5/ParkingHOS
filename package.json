@@ -20,7 +20,6 @@
   "dependencies": {
     "cloudinary": "",
     "express": "^4.14.0",
-    "express-request-proxy": "^2.0.0",
     "pg": "6.0.2"
   }
 }
