@@ -11,3 +11,10 @@
   margin: auto;
   padding-right: 8%
 }
+
+#shameSign {
+  float: right;
+  max-width: 100%;
+  right: 2em;
+  bottom: 20%
+}
