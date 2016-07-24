@@ -11,7 +11,8 @@ I've seen too many people parking like assholes and want to shame then on a publ
 - I want to publish a bad parking job publicly. 
 - I want to be able to query by collected data (make, model, state, license plate #) to see broad and narrow ranges of bad parking records.
 
-## Overview:  We have developed a web app that allows user input and image upload and display or data
+## Overview:
+We have developed a web app that allows user input and image upload and display or data
 
 ## Minimum Viable Product:
 - Users can view other poorly parked drivers.
