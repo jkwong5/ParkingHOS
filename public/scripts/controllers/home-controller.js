@@ -8,6 +8,9 @@
     }
     $('#search, #results, #post').hide();
     $('#blog').show();
+    if (next) {
+      next();
+    }
   };
 
   module.index = index;
