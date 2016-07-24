@@ -29,9 +29,9 @@ We have developed a web app that allows user input and image upload and display 
 - Gameficiation
 
 ## Dependencies
-Postgres - Heroku database add-on for storing data.
-Cloudinary - Heroku add-on for handling image upload, storage, and download.
-Express - Middleware for handling routing of pages.
+- Postgres - Heroku database add-on for storing data.
+- Cloudinary - Heroku add-on for handling image upload, storage, and download.
+- Express - Middleware for handling routing of pages.
 
 ## Problems Encountered:
 - Postgres posting
