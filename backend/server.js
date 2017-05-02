@@ -1,8 +1,22 @@
-var express = require('express'),
-  cloudinary = require('cloudinary'),
-  pg = require('pg'),
-  port = process.env.PORT || 3000,
-  app = express();
+var express = require('express');
+var cloudinary = require('cloudinary');
+var mongoose = require('mongoose');
+var morgan = require('morgan');
+
+var PORT = process.env.PORT || 3000;
+
+var MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/invaders';
+
+mongoose.connect(MONGODB_URI);
+mongoose.Promise = Promise;
+
+app.use(morgan('dev'));
+
+// var express = require('express'),
+//   cloudinary = require('cloudinary'),
+//   pg = require('pg'),
+//   port = process.env.PORT || 3000,
+//   app = express();
 
 app.get('/db/invaders', function(req, res) {
   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
