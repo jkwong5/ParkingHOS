@@ -1,3 +1,5 @@
+//jquery ajax call here will hit the route that renders the home page
+
 (function(module) {
 
   index = {};

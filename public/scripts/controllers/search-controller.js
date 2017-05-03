@@ -1,3 +1,6 @@
+//jquery ajax call here will hit the search page route and 
+
+
 (function(module) {
 
   index.renderSearchPage = function (ctx, next) {

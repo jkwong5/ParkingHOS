@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/jkwong5/ParkingHOS#readme",
   "dependencies": {
-    "cloudinary": "",
-    "express": "^4.14.0",
-    "pg": "6.0.2"
+    "body-parser": "^1.17.1",
+    "cloudinary": "^1.9.0",
+    "express": "^4.15.2",
+    "http-errors": "^1.6.1",
+    "mongoose": "^4.9.7",
+    "morgan": "^1.8.1"
   }
 }

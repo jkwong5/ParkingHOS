@@ -1,3 +1,5 @@
+//jQuery ajax call will hit the post back-end route
+
 (function(module) {
 
   index.renderPostPage = function (ctx, next) {

@@ -1,10 +1,10 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var createError = require('http-errors');
+// var createError = require('http-errors');
 
 var invaderSchema = mongoose.Schema({
-  date: {type: Date, Default: date.now},
+  date: {type: Date, Default: Date.now},
   img_url: {type: String},
   lic_plate: {type: String},
   lic_state: {type: String},
