@@ -4,6 +4,7 @@ let mongoose = require('mongoose');
 let morgan = require('morgan');
 let invaderRoutes = require('./route/invader-routes.js');
 let errorMiddleWare = require('./lib/error.js');
+let fs = require('fs');
 
 let app = express();
 
@@ -20,6 +21,19 @@ mongoose.Promise = Promise;
 app.use(morgan('dev'));
 app.use(errorMiddleWare);
 app.use(invaderRoutes);
+
+//one time read file to push makes and models to database
+fs.readFile('cars.json', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  let carData = JSON.parse(data);
+  carData.forEach(function(make) {
+    console.log(make.models); //sends a bunch of car models. need to look at a db loading route and api call to make better
+  });
+});
+
 
 // app.get('/db/invaders', function(req, res) {
 //   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
