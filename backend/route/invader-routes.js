@@ -13,9 +13,12 @@ let jsonParser = require('body-parser').json()
 // module constants
 let router = module.exports = new Router();
 
-//submit an invader
+//submits an invader to mongoDB
 router.post('/submit', jsonParser, (req, res, next) => {
   new Invader(req.body).save()
   .then(invader => res.json(invader))
   .catch(next);
 });
+
+//get all the 
+router.get('/home')

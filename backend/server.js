@@ -3,7 +3,9 @@ let cloudinary = require('cloudinary');
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let invaderRoutes = require('./route/invader-routes.js');
+let loadRoutes = require('./route/db-load-routes.js');
 let errorMiddleWare = require('./lib/error.js');
+let fs = require('fs');
 
 let app = express();
 
@@ -19,7 +21,24 @@ mongoose.Promise = Promise;
 //mouting routes and middlware
 app.use(morgan('dev'));
 app.use(errorMiddleWare);
+app.use(loadRoutes);
 app.use(invaderRoutes);
+
+//this is a working example of how I want to load the cars DB
+fs.readFile('cars.json', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  let carData = JSON.parse(data);
+  let carObj = carData.makes.map(function(ele) {
+    return {make: ele.name, models: ele.models.map(function(model) {
+      return model.niceName;
+    })};
+  });
+  console.log(carObj);
+});
+
 
 // app.get('/db/invaders', function(req, res) {
 //   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
