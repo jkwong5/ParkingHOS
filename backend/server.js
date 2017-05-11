@@ -5,6 +5,7 @@ let morgan = require('morgan');
 let invaderRoutes = require('./route/invader-routes.js');
 let loadRoutes = require('./route/db-load-routes.js');
 let carRoutes = require('./route/car-routes.js');
+let searchRoutes = require('./route/search-routes.js');
 let errorMiddleWare = require('./lib/error.js');
 let fs = require('fs');
 
@@ -25,6 +26,7 @@ app.use(errorMiddleWare);
 app.use(loadRoutes);
 app.use(invaderRoutes);
 app.use(carRoutes);
+app.use(searchRoutes);
 
 // app.get('/db/invaders', function(req, res) {
 //   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
