@@ -3,7 +3,6 @@
 // GET route to render all invaders on the home screen
 
 'use strict';
-
 // app modules
 let Router = require('express').Router;
 let Invader = require('../model/invaders.js');
@@ -19,6 +18,3 @@ router.post('/submit', jsonParser, (req, res, next) => {
   .then(invader => res.json(invader))
   .catch(next);
 });
-
-//get all the 
-router.get('/home')
