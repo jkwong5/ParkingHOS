@@ -18,3 +18,16 @@ router.post('/submit', jsonParser, (req, res, next) => {
   .then(invader => res.json(invader))
   .catch(next);
 });
+
+
+router.get('/', (req, res) => {
+  Invader.find({})
+  .then(invaders => {
+    res.render('home.njk', invaders);
+  });
+});
+
+//picture
+//license plate
+//license state
+//date posted
