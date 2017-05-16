@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    {% include "./meta.njk" %}
+    {% include "./css.njk" %}
+  </head>
+  <body class="">
+    <header>
+      {% include "./nav.njk" %}
+    </header>
+    <main>
+      <div class="container">
+        {% if error %}
+          {% block error %}
+          {% endblock %}
+        {% endif %}
+        {% block cards %}
+        {% endblock %}
+        {% block button %}
+        {% endblock %}
+        {% block modal %}
+        {% endblock %}
+      </div>
+    </main>
+    {% include "./js.njk" %}
+  </body>
+</html>

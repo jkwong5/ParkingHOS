@@ -2,13 +2,26 @@ let express = require('express');
 let cloudinary = require('cloudinary');
 let mongoose = require('mongoose');
 let morgan = require('morgan');
+let path = require('path');
 let invaderRoutes = require('./route/invader-routes.js');
+let loadRoutes = require('./route/db-load-routes.js');
+let carRoutes = require('./route/car-routes.js');
+let searchRoutes = require('./route/search-routes.js');
 let errorMiddleWare = require('./lib/error.js');
+let nunjucks = require('nunjucks');
+let fs = require('fs');
 
 let app = express();
 
 let PORT = process.env.PORT || 3000;
 
+// Nunjucks templating setup
+nunjucks.configure('../views', {
+  autoescape: true,
+  express: app
+});
+
+app.set('view engine', 'nunjucks');
 
 //define monogo and connect it.
 let MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/invaders';
@@ -19,64 +32,15 @@ mongoose.Promise = Promise;
 //mouting routes and middlware
 app.use(morgan('dev'));
 app.use(errorMiddleWare);
+app.use(loadRoutes);
 app.use(invaderRoutes);
+app.use(carRoutes);
+app.use(searchRoutes);
 
-// app.get('/db/invaders', function(req, res) {
-//   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
-//     console.log(err);
-//
-//     client.query('SELECT * FROM invaders ORDER BY p_id desc', function(err, result) {
-//       if (err) return console.error(err);
-//       res.send(result.rows);
-//       client.end();
-//       done();
-//     });
-//   });
-// });
+app.use('/static', express.static(path.join(__dirname, '../public')));
 
-// app.get('/db/makeModel', function(req, res) {
-//   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
-//     console.log(err);
-//
-//     client.query('SELECT * FROM makeModel', function(err, result) {
-//       if (err) return console.error(err);
-//       res.send(result.rows);
-//       client.end();
-//       done();
-//     });
-//   });
-// });
-//
-// app.get('/postNew/', function(req, res) {
-//
-//   var dt = req.query.dt;
-//   var licp = req.query.lp;
-//   var lics = req.query.ls;
-//   var make = req.query.ma;
-//   var model = req.query.mo;
-//   var lat = req.query.lat;
-//   var lng = req.query.lng;
-//   var img = req.query.img;
-//
-//   pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client, done) {
-//     console.log(err);
-//
-//     client.query('INSERT INTO invaders (dt, lic_plate, lic_state, make, model, lat, lng, img_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);', [dt, licp, lics, make, model, lat, lng, img], function(err, result) {
-//       if (err) return console.error(err);
-//       console.log(result.rows);
-//       // res.send('hello world');
-//       client.end();
-//       res.redirect('/');
-//       done();
-//     });
-//   });
-// });
-
-app.use(express.static('../public/'));
-
-app.get('/', function(req, res) {
-  res.sendFile('../public/index.html');
-  // console.log(res);
+app.get('/', (req, res) => {
+  res.render('home.njk');
 });
 
 app.listen(PORT, function() {
