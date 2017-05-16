@@ -17,8 +17,8 @@
     }
     $('#upload_widget_opener').cloudinary_upload_widget(
       {
-        cloud_name: 'htc5w5cys',
-        upload_preset: 'dx9pzwds',
+        cloud_name: 'hyuowrnv9',
+        upload_preset: 'nuykexvl',
         cropping: 'server', 'folder': 'user_photos',
       },
     function(error, result) { console.log(error, result);
