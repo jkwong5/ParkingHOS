@@ -3,7 +3,7 @@
 {% block cards %}
 <h1>{{ title }}</h1>
 <div class="row">
-  
+
 <!--Card 3-->
 <div class="row">
   <div class="col-md-4">
@@ -59,7 +59,7 @@
 
 {% block button %}
 <div class="fab">
-  <a class="btn-floating btn-large red" style="bottom: 45px; right: 24px;" data-toggle="modal" data-target="#modalInputForm">
+  <a class="btn-floating btn-large red" style="bottom: 45px; right: 24px;" data-toggle="modal" data-target="#modalInputForm" id="postButton">
     <i class="fa fa-plus"></i>
   </a>
 </div>
@@ -73,18 +73,23 @@
         <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="title"><i class="fa fa-pencil"></i> Contact form</h4>
+        <h4 class="title"><i class="fa fa-pencil"></i> Submit an Invader</h4>
       </div>
       <div class="modal-body mb-0">
         <div class="md-form form-sm">
           <i class="fa fa-envelope prefix"></i>
           <input type="text" id="form19" class="form-control">
-          <label for="form19">Your name</label>
+          <label for="form19">License Plate</label>
         </div>
         <div class="md-form form-sm">
           <i class="fa fa-lock prefix"></i>
-          <input type="password" id="form20" class="form-control">
-          <label for="form20">Your email</label>
+          <select name="state" id="form20" class="form-control">
+            <option value="">-- State --</option>
+            {% for state in states %}
+            <option> {{ state }} </option>
+            {% endfor %}
+          </option>
+        </select>
         </div>
         <div class="md-form form-sm">
           <i class="fa fa-tag prefix"></i>
