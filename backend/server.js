@@ -8,8 +8,8 @@ let loadRoutes = require('./route/db-load-routes.js');
 let carRoutes = require('./route/car-routes.js');
 let searchRoutes = require('./route/search-routes.js');
 let errorMiddleWare = require('./lib/error.js');
+let cors = require('cors');
 let nunjucks = require('nunjucks');
-let fs = require('fs');
 
 let app = express();
 
@@ -31,6 +31,7 @@ mongoose.Promise = Promise;
 
 //mouting routes and middlware
 app.use(morgan('dev'));
+app.use(cors());
 app.use(errorMiddleWare);
 app.use(loadRoutes);
 app.use(invaderRoutes);
