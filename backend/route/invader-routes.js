@@ -8,6 +8,7 @@ let Router = require('express').Router;
 let Invader = require('../model/invaders.js');
 let createError = require('http-errors');
 let jsonParser = require('body-parser').json()
+let fs = require('fs');
 
 // module constants
 let router = module.exports = new Router();
@@ -24,6 +25,19 @@ router.get('/', (req, res) => {
   Invader.find({})
   .then(invaders => {
     res.render('home.njk', invaders);
+  });
+});
+
+router.get('/states', (req, res) => {
+  fs.readFile('./data/states.json', (err, states) => {
+    if(err) {
+      console.error(err);
+    }
+    let readableStates = JSON.parse(states);
+    let stateNameList = readableStates.map(function(state) {
+      return state.name;
+    });
+    res.json(stateNameList);
   });
 });
 
