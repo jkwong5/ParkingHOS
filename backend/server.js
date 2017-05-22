@@ -10,7 +10,6 @@ let searchRoutes = require('./route/search-routes.js');
 let errorMiddleWare = require('./lib/error.js');
 let cors = require('cors');
 let nunjucks = require('nunjucks');
-let fs = require('fs');
 
 let app = express();
 

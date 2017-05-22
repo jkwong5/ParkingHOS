@@ -5,3 +5,7 @@
   padding-top: 15px;
   margin-bottom: 0;
   z-index: 998; }
+
+div.modal i {
+margin-left: 0.3em
+}

@@ -77,32 +77,42 @@
       </div>
       <div class="modal-body mb-0">
         <div class="md-form form-sm">
-          <i class="fa fa-envelope prefix"></i>
+          <i class="fa fa-drivers-license prefix"></i>
           <input type="text" id="form19" class="form-control">
           <label for="form19">License Plate</label>
         </div>
+        <i class="fa fa-map-marker prefix"></i>
         <div class="md-form form-sm">
-          <i class="fa fa-lock prefix"></i>
-          <select name="state" id="form20" class="form-control">
-            <option value="">-- State --</option>
-            {% for state in states %}
+          <select name="state" id="stateBar" class="form-control">
+            <option value=""> --- State --- </option>
+            {# TODO: figure out how to access our data and populate it in this template #}
+
+            {# {% for state in states %}
             <option> {{ state }} </option>
-            {% endfor %}
-          </option>
+            {% endfor %} #}
         </select>
         </div>
+        <i class="fa fa-car prefix"></i>
         <div class="md-form form-sm">
-          <i class="fa fa-tag prefix"></i>
-          <input type="text" id="form21" class="form-control">
-          <label for="form21">Subject</label>
+          <select name="Make" id="makeBar" class="form-control">
+            <option value=""> ---Make --- </option>
+        </select>
         </div>
+        <i class="fa fa-search-plus prefix"></i>
         <div class="md-form form-sm">
-          <i class="fa fa-pencil prefix"></i>
-          <textarea type="text" id="form8" class="md-textarea mb-0"></textarea>
-          <label for="form8">Your message</label>
+          <select name="Model" id="modelBar" class="form-control">
+            <option value=""> ---Model --- </option>
+
+        </select>
         </div>
+
+        {# TODO: Add the image widget here #}
+        <div id = "imageWidget">
+          <a href="#" id="upload_widget_opener"></a>
+        </div><br>
+
         <div class="text-center mt-1-half">
-          <button class="btn btn-info mb-2">Send <i class="fa fa-send ml-1"></i></button>
+          <button class="btn btn-info mb-2">Submit Invader <i class="fa fa-send ml-1"></i></button>
         </div>
       </div>
     </div>
