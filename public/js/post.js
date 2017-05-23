@@ -4,7 +4,7 @@
 //hard-coding it here but that will change upon deployment
   let __API_URL__ = 'http://localhost:3000';
 
-  //This is one way to populate the drop-down, but it's bad practice. Let's not do this.
+  //populates state dropdown menu via bad practices
   $('#postButton').on('click', function(e) {
     e.preventDefault();
     $("#stateBar").empty();
@@ -18,7 +18,7 @@
     });
   });
 
-  //keep the logic that makes the db call, but put it into template. Not sure how.
+  //car make dropdown menu
   $('#makeBar').on('click', function(e) {
     e.preventDefault()
     $.ajax ({
@@ -28,6 +28,19 @@
       console.log(carNames);
     });
   });
+
+  //upload widget for post modal
+  $('#upload_widget_opener').cloudinary_upload_widget(
+    {
+      cloud_name: 'hyuowrnv9',
+      upload_preset: 'nuykexvl',
+      cropping: 'server', 'folder': 'user_photos'
+    },
+    function(error, result) {
+      console.log(error, result);
+    });
+
+
 
   // TODO: Make it so model data can populate on the front-end based off what is selected in the make
 
