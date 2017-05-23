@@ -96,6 +96,10 @@
         <div class="md-form form-sm">
           <select name="Make" id="makeBar" class="form-control">
             <option value=""> ---Make --- </option>
+            {% set makes = carMakes %}
+            {% for car in makes %}
+            <option> {{ car }} </option>
+            {% endfor %}
         </select>
         </div>
         <i class="fa fa-search-plus prefix"></i>
@@ -106,13 +110,12 @@
         </select>
         </div>
 
-        {# TODO: Add the image widget here #}
         <div id = "imageWidget">
           <a href="#" id="upload_widget_opener"></a>
         </div><br>
 
         <div class="text-center mt-1-half">
-          <button class="btn btn-info mb-2">Submit Invader <i class="fa fa-send ml-1"></i></button>
+          <button class="btn btn-info mb-2" id="invaderPost">Submit Invader <i class="fa fa-send ml-1"></i></button>
         </div>
       </div>
     </div>
