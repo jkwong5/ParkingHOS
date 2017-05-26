@@ -1,6 +1,9 @@
 
 (function(module) {
 
+  nunjucks.configure('static', {autoescape: true});
+
+
 //hard-coding it here but that will change upon deployment
   let __API_URL__ = 'http://localhost:3000';
   let pic_url;
@@ -20,16 +23,18 @@
     });
   });
 
+
   //car make dropdown menu
-  $('#makeBar').on('click', function(e) {
+  $('#postButton').on('click', function(e) {
     e.preventDefault();
     $.ajax ({
       method: 'GET',
       url: `${__API_URL__}/cars`
     }).done(function(carNames) {
-      console.log(carNames);
-      carMakes = carNames;
-      return carMakes;
+      $('#makeBar').append((nunjucks.render('views/carmakes.njk', {makes: carNames})))
+      // console.log(carNames);
+      // carMakes = carNames;
+      // return carMakes;
     });
   });
 

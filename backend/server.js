@@ -16,7 +16,7 @@ let app = express();
 let PORT = process.env.PORT || 3000;
 
 // Nunjucks templating setup
-nunjucks.configure('../views', {
+nunjucks.configure('../public/views', {
   autoescape: true,
   express: app
 });
