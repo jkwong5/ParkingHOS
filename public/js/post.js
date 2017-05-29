@@ -7,19 +7,16 @@
 //hard-coding it here but that will change upon deployment
   let __API_URL__ = 'http://localhost:3000';
   let pic_url;
-  let carMakes;
 
-  //populates state dropdown menu via bad practices
+//drop-down menu for list of US states
   $('#postButton').on('click', function(e) {
     e.preventDefault();
     $("#stateBar").empty();
     $.ajax({
       method: 'GET',
-      url: `${__API_URL__}/states` //puts the list of states in the front end
+      url: `${__API_URL__}/states`
     }).done(function(stateNames) {
-      $.each(stateNames, function(index) {
-        $("#stateBar").append("<option value =' " + index + " '>" + stateNames[index] + "</option>");
-      });
+      $('#stateBar').append((nunjucks.render('views/states.njk', {stateList: stateNames})))
     });
   });
 
@@ -27,14 +24,12 @@
   //car make dropdown menu
   $('#postButton').on('click', function(e) {
     e.preventDefault();
+    $('#makeBar').empty();
     $.ajax ({
       method: 'GET',
       url: `${__API_URL__}/cars`
     }).done(function(carNames) {
       $('#makeBar').append((nunjucks.render('views/carmakes.njk', {makes: carNames})))
-      // console.log(carNames);
-      // carMakes = carNames;
-      // return carMakes;
     });
   });
 
