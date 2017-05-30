@@ -65,9 +65,8 @@
   //upload widget for post modal
   $('#upload_widget_opener').cloudinary_upload_widget(
     {
-      cloud_name: 'hyuowrnv9',
-      upload_preset: 'nuykexvl',
-      cropping: 'server', 'folder': 'user_photos'
+      cloud_name: 'dy7kdxxqe',
+      upload_preset: 'devolunteer'
     },
     function(error, result) {
       if(error) {
@@ -78,7 +77,8 @@
     });
 
 //ajax post request, at the moment just sends cloudinary url which will be grabbed in a template
-  $('#invaderPost').on('click', function() {
+  $('#invaderSubmit').on('submit', function(e) {
+    e.preventDefault()
     lic_plate = $('#lic_plate_input').val();
     $.ajax ({
       type: 'POST',
