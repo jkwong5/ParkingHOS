@@ -27,9 +27,8 @@
 
 
   //car make dropdown menu
-  $('#postButton').on('click', function(e) {
-    e.preventDefault();
-    $('#makeBar').empty();
+  $('#postButton').on('click', function() {
+    $('.cloudinary-thumbnails').empty();
     $.ajax ({
       method: 'GET',
       url: `${__API_URL__}/cars`
@@ -46,11 +45,14 @@
       method: 'GET',
       url: `${__API_URL__}/cars/${carMake}`
     }).done(function(carModels) {
-      carMake = $('#makeBar').val();
       $('#modelBar').append((nunjucks.render('views/carmodels.njk', {models: carModels})));
     });
   });
 
+//updates the value of the carMake variable
+  $('#makeBar').on('change', function() {
+    carMake = $('#makeBar').val();
+  });
 //updates value of carModel variable
   $('#modelBar').on('change', function() {
     carModel = $('#modelBar').val();
@@ -91,6 +93,8 @@
       dataType:'json'
     }).done(function() {
       console.log('success');
+      $('#lic_plate_input').val('');
+      $('#makeBar').empty();
       $('#modalInputForm').modal('toggle');
     });
   });
