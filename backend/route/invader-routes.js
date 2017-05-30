@@ -21,10 +21,10 @@ router.post('/submit', jsonParser, (req, res, next) => {
 });
 
 
-router.get('/', (req, res) => {
+router.get('/invaders', (req, res) => {
   Invader.find({})
   .then(invaders => {
-    res.render('home.njk', invaders);
+    res.json(invaders);
   });
 });
 

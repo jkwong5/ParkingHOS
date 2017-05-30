@@ -2,59 +2,8 @@
 
 {% block cards %}
 <h1>{{ title }}</h1>
-<div class="row">
 
-<!--Card 3-->
-<div class="row">
-  <div class="col-md-4">
-    <div class="card card-cascade">
-      <div class="view overlay hm-white-slight">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2842%29.jpg" class="img-fluid" alt="">
-        <a>
-          <div class="mask waves-effect waves-light"></div>
-        </a>
-      </div>
-      <div class="card-block text-center">
-        <h4 class="card-title"><strong>Billy Cullen</strong></h4>
-        <h5>Web developer</h5>
-        <p class="card-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.</p>
-        <a class="btn btn-primary">Button</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card card-cascade">
-      <div class="view overlay hm-white-slight">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2842%29.jpg" class="img-fluid" alt="">
-        <a>
-          <div class="mask waves-effect waves-light"></div>
-        </a>
-      </div>
-      <div class="card-block text-center">
-        <h4 class="card-title"><strong>Billy Cullen</strong></h4>
-        <h5>Web developer</h5>
-        <p class="card-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.</p>
-        <a class="btn btn-primary">Button</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card card-cascade">
-      <div class="view overlay hm-white-slight">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%2842%29.jpg" class="img-fluid" alt="">
-        <a>
-          <div class="mask waves-effect waves-light"></div>
-        </a>
-      </div>
-      <div class="card-block text-center">
-        <h4 class="card-title"><strong>Billy Cullen</strong></h4>
-        <h5>Web developer</h5>
-        <p class="card-text">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates.</p>
-        <a class="btn btn-primary">Button</a>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="row" id="invaderList"></div>
 {% endblock %}
 
 {% block button %}
@@ -84,7 +33,7 @@
         <i class="fa fa-map-marker prefix"></i>
         <div class="md-form form-sm">
           <select name="state" id="stateBar" class="form-control">
-            {# potentially write an extend to the other template? I believe that is best practice #}
+
         </select>
         </div>
         <i class="fa fa-car prefix"></i>
