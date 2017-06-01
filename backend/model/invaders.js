@@ -9,7 +9,8 @@ var invaderSchema = mongoose.Schema({
   lic_plate: {type: String},
   lic_state: {type: String},
   make: {type: String, ref: 'cars'},
-  model: {type: String, ref: 'cars'}
+  model: {type: String, ref: 'cars'},
+  shame: {type: Number}
 });
 
 module.exports = mongoose.model('invaders', invaderSchema);
