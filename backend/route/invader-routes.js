@@ -7,7 +7,8 @@
 let Router = require('express').Router;
 let Invader = require('../model/invaders.js');
 let createError = require('http-errors');
-let jsonParser = require('body-parser').json()
+let jsonParser = require('body-parser').json();
+let nunjucks = require('nunjucks');
 let fs = require('fs');
 
 // module constants
@@ -24,7 +25,8 @@ router.post('/submit', jsonParser, (req, res, next) => {
 router.get('/invaders', (req, res) => {
   Invader.find({})
   .then(invaders => {
-    res.json(invaders);
+    let renderedInvaders = nunjucks.render('invaders.njk', {invaderList: invaders});
+    res.send(renderedInvaders);
   });
 });
 
@@ -37,7 +39,8 @@ router.get('/states', (req, res) => {
     let stateNameList = readableStates.map(function(state) {
       return state.name;
     });
-    res.json(stateNameList);
+    let renderedStates = nunjucks.render('states.njk', {stateList: stateNameList});
+    res.send(renderedStates);
   });
 });
 

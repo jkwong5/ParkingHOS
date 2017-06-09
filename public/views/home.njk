@@ -35,17 +35,22 @@
         </div>
         <i class="fa fa-map-marker prefix"></i>
         <div class="md-form form-sm">
-          <select name="state" id="stateBar" class="form-control" required></select>
+          <select name="state" id="stateBar" class="form-control" required>
+            {% include "./states.njk" %}
+
+          </select>
         </div>
         <i class="fa fa-car prefix"></i>
         <div class="md-form form-sm">
-          <select name="Make" id="makeBar" class="form-control" required></select>
+          <select name="Make" id="makeBar" class="form-control" required>
+            {% include "./carmakes.njk" %}
+          </select>
         </div>
         <i class="fa fa-search-plus prefix"></i>
         <div class="md-form form-sm">
           <select name="Model" id="modelBar" class="form-control" required>
             <option value=""> ---Model --- </option>
-
+            {% include "./carmodels.njk" %}
         </select>
         </div>
 
