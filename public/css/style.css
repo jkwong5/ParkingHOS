@@ -13,3 +13,6 @@ margin-left: 0.3em
 div.col-md-3 {
   padding: 0.5em;
 }
+ a.cloudinary-button {
+  -webkit-border-radius: 2px;
+ }
