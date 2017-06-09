@@ -3,7 +3,9 @@
 {% block cards %}
 <h1>{{ title }}</h1>
 
-<div class="row" id="invaderList"></div>
+<div class="row" id="invaderList">
+  {% include "./invaders.njk" %}
+</div>
 {% endblock %}
 
 {% block button %}
