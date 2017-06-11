@@ -47,9 +47,16 @@ router.get('/states', (req, res) => {
 router.post('/shame/:id', (req, res) => {
   Invader.findOne({_id: req.params.id})
   .then(invader => {
+    invader.shame += 1;
+    invader.save();
     res.json(invader);
+  })
+  .catch((err) => {
+    console.error(err);
   });
 });
+
+
 
 //picture
 //license plate

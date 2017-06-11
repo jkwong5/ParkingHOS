@@ -11,10 +11,10 @@
       <h4 class="card-title"><strong>{{ invader.lic_plate }}</strong></h4>
       <h5> {{ invader.lic_state }} </h5>
       <p class="card-text"> {{ invader.make }} {{ invader.model }} </p>
-      <button class="btn btn-primary" id="shameButton"><a>Shame!!</a></button>
+        <button class="btn btn-primary" id="shameButton" data-jacob="{{ invader._id }}">Shame!!</button>
         <div class="single_counter p-y-2">
           <i class="fa fa-frown-o"></i>
-          <h2 class="statistic-counter" id="countStats">400</h2>
+          <h2 class="statistic-counter" id="countStats"> {{ invader.shame }}</h2>
           <p>Shamings</p>
     </div>
     </div>
