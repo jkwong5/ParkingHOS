@@ -15,8 +15,10 @@
           method: 'POST',
           url: `${__API_URL__}/shame/${invaderId}`
         }).done(function(invader) {
-          $('#countStats').empty();
-          $('#countStats').append(invader.shame);
+          e.target.nextSibling.nextSibling.innerHTML = '';
+          var z = document.createElement('h2');
+          z.innerHTML = invader.shame;
+          e.target.nextSibling.nextSibling.appendChild(z);
         });
       });
     });
