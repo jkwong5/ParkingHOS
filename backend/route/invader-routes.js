@@ -1,7 +1,3 @@
-//this should have:
-// POST route to submit an invader
-// GET route to render all invaders on the home screen
-
 'use strict';
 // app modules
 let Router = require('express').Router;
@@ -21,7 +17,7 @@ router.post('/submit', jsonParser, (req, res, next) => {
   .catch(next);
 });
 
-
+//renders all the invaders in the database
 router.get('/invaders', (req, res) => {
   Invader.find({})
   .then(invaders => {
@@ -30,6 +26,7 @@ router.get('/invaders', (req, res) => {
   });
 });
 
+//populates dropdown menu of states on the invader post module
 router.get('/states', (req, res) => {
   fs.readFile('./data/states.json', (err, states) => {
     if(err) {
@@ -44,21 +41,15 @@ router.get('/states', (req, res) => {
   });
 });
 
+//allows for shaming count on each invader to persist
 router.post('/shame/:id', (req, res) => {
   Invader.findOne({_id: req.params.id})
   .then(invader => {
     invader.shame += 1;
     invader.save();
-    res.json(invader);
+    res.json(invader.shame);
   })
   .catch((err) => {
     console.error(err);
   });
 });
-
-
-
-//picture
-//license plate
-//license state
-//date posted
