@@ -1,13 +1,10 @@
-//this should have:
-// POST route to submit an invader
-// GET route to render all invaders on the home screen
-
 'use strict';
 // app modules
 let Router = require('express').Router;
 let Invader = require('../model/invaders.js');
 let createError = require('http-errors');
-let jsonParser = require('body-parser').json()
+let jsonParser = require('body-parser').json();
+let nunjucks = require('nunjucks');
 let fs = require('fs');
 
 // module constants
@@ -20,14 +17,16 @@ router.post('/submit', jsonParser, (req, res, next) => {
   .catch(next);
 });
 
-
+//renders all the invaders in the database
 router.get('/invaders', (req, res) => {
   Invader.find({})
   .then(invaders => {
-    res.json(invaders);
+    let renderedInvaders = nunjucks.render('invaders.njk', {invaderList: invaders});
+    res.send(renderedInvaders);
   });
 });
 
+//populates dropdown menu of states on the invader post module
 router.get('/states', (req, res) => {
   fs.readFile('./data/states.json', (err, states) => {
     if(err) {
@@ -37,11 +36,20 @@ router.get('/states', (req, res) => {
     let stateNameList = readableStates.map(function(state) {
       return state.name;
     });
-    res.json(stateNameList);
+    let renderedStates = nunjucks.render('states.njk', {stateList: stateNameList});
+    res.send(renderedStates);
   });
 });
 
-//picture
-//license plate
-//license state
-//date posted
+//allows for shaming count on each invader to persist
+router.post('/shame/:id', (req, res) => {
+  Invader.findOne({_id: req.params.id})
+  .then(invader => {
+    invader.shame += 1;
+    invader.save();
+    res.json(invader.shame);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+});
