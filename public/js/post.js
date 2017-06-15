@@ -1,8 +1,8 @@
 
 (function(module) {
 
-//hard-coding it here but that will change upon deployment
-  let __API_URL__ = 'http://localhost:3000';
+  let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
+  
   let pic_url;
   let carMake;
   let carModel;

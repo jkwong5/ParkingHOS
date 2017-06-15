@@ -1,7 +1,6 @@
 (function() {
 
-//hard-coding it here but that will change upon deployment
-  let __API_URL__ = 'http://localhost:3000';
+  let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
   //when the page is ready, add in the invaders
   $(document).ready(function() {
