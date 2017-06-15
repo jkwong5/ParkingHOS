@@ -5,6 +5,7 @@ let Invader = require('../model/invaders.js');
 let createError = require('http-errors');
 let jsonParser = require('body-parser').json();
 let nunjucks = require('nunjucks');
+let path = require('path')
 let fs = require('fs');
 
 // module constants
@@ -28,7 +29,7 @@ router.get('/invaders', (req, res) => {
 
 //populates dropdown menu of states on the invader post module
 router.get('/states', (req, res) => {
-  fs.readFile('./data/states.json', (err, states) => {
+  fs.readFile(path.join(__dirname, '../data/states.json'), (err, states) => {
     if(err) {
       console.error(err);
     }
