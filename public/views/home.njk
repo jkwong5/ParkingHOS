@@ -1,0 +1,69 @@
+{% extends "./base.njk" %}
+
+{% block cards %}
+<h1>{{ title }}</h1>
+
+<div class="row" id="invaderList">
+  {% include "./invaders.njk" %}
+</div>
+{% endblock %}
+
+{% block button %}
+<div class="fab">
+  <a class="btn-floating btn-large red" style="bottom: 45px; right: 24px;" data-toggle="modal" data-target="#modalInputForm" id="postButton">
+    <i class="fa fa-plus"></i>
+  </a>
+</div>
+{% endblock %}
+
+{% block modal %}
+<div class="modal fade" id="modalInputForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header light-blue darken-3 white-text">
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="title"><i class="fa fa-pencil"></i> Submit an Invader</h4>
+      </div>
+      <div class="modal-body mb-0">
+        <form id="invaderSubmit">
+        <div class="md-form form-sm">
+          <i class="fa fa-drivers-license prefix"></i>
+          <input type="text" id="lic_plate_input" class="form-control" required/>
+          <label for="form19">License Plate</label>
+        </div>
+        <i class="fa fa-map-marker prefix"></i>
+        <div class="md-form form-sm">
+          <select name="state" id="stateBar" class="form-control" required>
+            {% include "./states.njk" %}
+
+          </select>
+        </div>
+        <i class="fa fa-car prefix"></i>
+        <div class="md-form form-sm">
+          <select name="Make" id="makeBar" class="form-control" required>
+            {% include "./carmakes.njk" %}
+          </select>
+        </div>
+        <i class="fa fa-search-plus prefix"></i>
+        <div class="md-form form-sm">
+          <select name="Model" id="modelBar" class="form-control" required>
+            <option value=""> ---Model --- </option>
+            {% include "./carmodels.njk" %}
+        </select>
+        </div>
+
+        <div id = "imageWidget">
+          <a href="#" id="upload_widget_opener"></a>
+        </div><br>
+
+        <div class="text-center mt-1-half">
+          <button class="btn btn-info mb-2" type="submit">Submit Invader <i class="fa fa-send ml-1"></i></button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
