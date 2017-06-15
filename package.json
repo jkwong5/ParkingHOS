@@ -1,0 +1,33 @@
+{
+  "name": "parking-hall-of-shame",
+  "version": "1.0.0",
+  "description": "Back and more shameful than ever",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkwong5/ParkingHOS.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jkwong5/ParkingHOS/issues"
+  },
+  "homepage": "https://github.com/jkwong5/ParkingHOS#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cloudinary": "^1.9.0",
+    "cors": "^2.8.3",
+    "eslint-config-jquery": "^1.0.1",
+    "express": "^4.15.2",
+    "gulp-nunjucks-render": "^2.2.1",
+    "http-errors": "^1.6.1",
+    "mongoose": "^4.9.7",
+    "morgan": "^1.8.1",
+    "nunjucks": "^3.0.0",
+    "superagent": "^3.5.2"
+  }
+}

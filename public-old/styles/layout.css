@@ -1,0 +1,42 @@
+
+.header {
+  font-family: '8-BIT';
+}
+
+form {
+  padding: 2em;
+}
+
+main{
+  background-color: #F0E68C;
+  margin: auto;
+  border-radius: 2em;
+  width: 90%;
+}
+
+section{
+  margin:auto;
+  padding: 3% 3% 3% 3%;
+}
+
+input {
+  max-width: 100%;
+}
+
+nav ul li {
+  display: inline-block;
+  text-decoration: none;
+  padding: 1em;
+  background-color: #FFF;
+  border-radius: 1em;
+  margin: auto
+}
+
+@media only screen and (min-width: 640px) {
+  .oldman img{
+    max-height: 40%;
+    position: fixed;
+    right: 6%;
+    bottom: 6%;
+  }
+}
