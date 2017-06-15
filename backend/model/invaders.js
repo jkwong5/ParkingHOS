@@ -13,4 +13,5 @@ var invaderSchema = mongoose.Schema({
   shame: {type: Number, default: 0}
 });
 
+
 module.exports = mongoose.model('invaders', invaderSchema);

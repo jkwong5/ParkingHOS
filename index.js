@@ -3,11 +3,11 @@ let cloudinary = require('cloudinary');
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let path = require('path');
-let invaderRoutes = require('./route/invader-routes.js');
-let loadRoutes = require('./route/db-load-routes.js');
-let carRoutes = require('./route/car-routes.js');
-let searchRoutes = require('./route/search-routes.js');
-let errorMiddleWare = require('./lib/error.js');
+let invaderRoutes = require('./backend/route/invader-routes.js');
+let loadRoutes = require('./backend/route/db-load-routes.js');
+let carRoutes = require('./backend/route/car-routes.js');
+let searchRoutes = require('./backend/route/search-routes.js');
+let errorMiddleWare = require('./backend/lib/error.js');
 let cors = require('cors');
 let nunjucks = require('nunjucks');
 
@@ -16,7 +16,7 @@ let app = express();
 let PORT = process.env.PORT || 3000;
 
 // Nunjucks templating setup
-nunjucks.configure('../public/views', {
+nunjucks.configure('./public/views', {
   autoescape: true,
   express: app
 });
@@ -38,7 +38,7 @@ app.use(invaderRoutes);
 app.use(carRoutes);
 app.use(searchRoutes);
 
-app.use('/static', express.static(path.join(__dirname, '../public')));
+app.use('/static', express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
   res.render('home.njk');

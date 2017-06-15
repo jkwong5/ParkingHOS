@@ -95,9 +95,4 @@
     });
   });
 
-  $('#shameButton').on('click', function() {
-    console.log('udders!');
-    console.log(this);
-  });
-
 })(window);
