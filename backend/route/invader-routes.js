@@ -2,10 +2,11 @@
 // app modules
 let Router = require('express').Router;
 let Invader = require('../model/invaders.js');
+let Driver = require('../model/drivers.js');
 let createError = require('http-errors');
 let jsonParser = require('body-parser').json();
 let nunjucks = require('nunjucks');
-let path = require('path')
+let path = require('path');
 let fs = require('fs');
 
 // module constants
@@ -14,7 +15,16 @@ let router = module.exports = new Router();
 //submits an invader to mongoDB
 router.post('/submit', jsonParser, (req, res, next) => {
   new Invader(req.body).save()
-  .then(invader => res.json(invader))
+  .then(invader => {
+    let pltAndState = invader.lic_plate.concat(invader.lic_state);
+    let query = {plateAndState: pltAndState};
+    Driver.findOneAndUpdate(query,
+      { '$push': { 'parkingInstances': invader._id } },
+      {upsert:true}, function(err, doc) {
+        if (err) return res.send(500, { error: err });
+        res.json(doc);
+      });
+  })
   .catch(next);
 });
 
