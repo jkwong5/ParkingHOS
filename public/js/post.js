@@ -1,8 +1,10 @@
 
 (function(module) {
 
-//hard-coding it here but that will change upon deployment
+  // let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
+
   let __API_URL__ = 'http://localhost:3000';
+
   let pic_url;
   let carMake;
   let carModel;
@@ -93,11 +95,6 @@
       $('#makeBar').empty();
       $('#modalInputForm').modal('toggle');
     });
-  });
-
-  $('#shameButton').on('click', function() {
-    console.log('udders!');
-    console.log(this);
   });
 
 })(window);
