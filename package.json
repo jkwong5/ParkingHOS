@@ -1,11 +1,11 @@
 {
-  "name": "latfa",
+  "name": "parking-hall-of-shame",
   "version": "1.0.0",
-  "description": "Parking Hall of Shame (Seattle 301n3 Final Project)",
+  "description": "Back and more shameful than ever",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

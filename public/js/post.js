@@ -1,12 +1,10 @@
 
 (function(module) {
 
-  //nunjucks brought into front-end of application via CDN
-  nunjucks.configure('static', {autoescape: true});
+  // let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
-
-//hard-coding it here but that will change upon deployment
   let __API_URL__ = 'http://localhost:3000';
+
   let pic_url;
   let carMake;
   let carModel;
@@ -21,7 +19,7 @@
       method: 'GET',
       url: `${__API_URL__}/states`
     }).done(function(stateNames) {
-      $('#stateBar').append((nunjucks.render('views/states.njk', {stateList: stateNames})));
+      $('#stateBar').append(stateNames);
     });
   });
 
@@ -32,8 +30,8 @@
     $.ajax ({
       method: 'GET',
       url: `${__API_URL__}/cars`
-    }).done(function(carNames) {
-      $('#makeBar').append((nunjucks.render('views/carmakes.njk', {makes: carNames})));
+    }).done(function(carMakes) {
+      $('#makeBar').append(carMakes);
     });
   });
 
@@ -45,7 +43,7 @@
       method: 'GET',
       url: `${__API_URL__}/cars/${carMake}`
     }).done(function(carModels) {
-      $('#modelBar').append((nunjucks.render('views/carmodels.njk', {models: carModels})));
+      $('#modelBar').append(carModels);
     });
   });
 
@@ -78,7 +76,7 @@
 
 //ajax post request, at the moment just sends cloudinary url which will be grabbed in a template
   $('#invaderSubmit').on('submit', function(e) {
-    e.preventDefault()
+    e.preventDefault();
     lic_plate = $('#lic_plate_input').val();
     $.ajax ({
       type: 'POST',
