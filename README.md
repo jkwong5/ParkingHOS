@@ -45,8 +45,8 @@
   - Image URL
   - License plate
   - License State
-  - Make
-  - Model
+  - Make (refers to cars model)
+  - Model (refers to cars model)
   - Shame
 
 - #### Car Model
