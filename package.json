@@ -2,7 +2,7 @@
   "name": "parking-hall-of-shame",
   "version": "1.0.0",
   "description": "Back and more shameful than ever",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
@@ -29,5 +29,8 @@
     "morgan": "^1.8.1",
     "nunjucks": "^3.0.0",
     "superagent": "^3.5.2"
+  },
+  "optionalDependencies": {
+    "fsevents" : "*"
   }
 }
