@@ -25,19 +25,16 @@
 
   //search by license plate
   $('#searchPlateBtn').on('click', function() {
-    let lic_plate_val = $('#lic_plate_search').val();
+    let lic_plate_val = $('#lic_plate_search').val().toUpperCase();
     $.ajax ({
       type: 'GET',
       url: `${__API_URL__}/search/license/${lic_plate_val}`
     }).done(function(invaders) {
-      if(invaders === 'not found') {
-        alert('not found');
-        return;
-      } else {
-        $('#modalRRForm').modal('toggle');
-        $('#invaderList').empty();
-        $('#invaderList').append(invaders);
-      }
+      $('#modalRRForm').modal('toggle');
+      $('#invaderList').empty();
+      $('#invaderList').append(invaders);
+    }).fail(function() {
+      alert('Invader Not Found');
     });
   });
 
@@ -47,14 +44,11 @@
       type: 'GET',
       url: `${__API_URL__}/search/state/${lic_state}`
     }).done(function(invaders) {
-      if(invaders === 'not found') {
-        alert('not found');
-        return;
-      } else {
-        $('#modalRRForm').modal('toggle');
-        $('#invaderList').empty();
-        $('#invaderList').append(invaders);
-      }
+      $('#modalRRForm').modal('toggle');
+      $('#invaderList').empty();
+      $('#invaderList').append(invaders);
+    }).fail(function() {
+      alert('Invader Not Found');
     });
   });
 
@@ -64,15 +58,11 @@
       type: 'GET',
       url: `${__API_URL__}/search/${carMake}/${carModel}`
     }).done(function(invaders) {
-      if(invaders === 'not found') {
-        alert('not found');
-        return;
-      } else {
-        $('#modalRRForm').modal('toggle');
-        $('#invaderList').empty();
-        $('#invaderList').append(invaders);
-      }
+      $('#modalRRForm').modal('toggle');
+      $('#invaderList').empty();
+      $('#invaderList').append(invaders);
+    }).fail(function() {
+      alert('Invader Not Found');
     });
   });
-
 })();
