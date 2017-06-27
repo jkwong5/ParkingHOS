@@ -38,7 +38,7 @@ app.use(invaderRoutes);
 app.use(carRoutes);
 app.use(searchRoutes);
 
-app.use('/static', express.static(path.join(__dirname, '/public')));
+app.use('/static', express.static(path.normalize(path.join(__dirname, '/public'))));
 
 app.get('/', (req, res) => {
   res.render('home.njk');

@@ -23,9 +23,8 @@
     "cors": "^2.8.3",
     "eslint-config-jquery": "^1.0.1",
     "express": "^4.15.2",
-    "gulp-nunjucks-render": "^2.2.1",
     "http-errors": "^1.6.1",
-    "mongoose": "^4.9.7",
+    "mongoose": "^4.10.8",
     "morgan": "^1.8.1",
     "nunjucks": "^3.0.0",
     "superagent": "^3.5.2"

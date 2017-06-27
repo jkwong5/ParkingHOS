@@ -38,18 +38,34 @@ router.get('/invaders', (req, res) => {
 });
 
 //populates dropdown menu of states on the invader post module
+// router.get('/states', (req, res) => {
+//   fs.readFile(path.join(__dirname, '../data/states.json'), (err, states) => {
+//     if(err) {
+//       console.error(err);
+//     }
+//     let readableStates = JSON.parse(states);
+//     let stateNameList = readableStates.map(function(state) {
+//       return state.name;
+//     });
+//     let renderedStates = nunjucks.render('states.njk', {stateList: stateNameList});
+//     res.send(renderedStates);
+//   });
+// });
+
 router.get('/states', (req, res) => {
-  fs.readFile(path.join(__dirname, '../data/states.json'), (err, states) => {
-    if(err) {
-      console.error(err);
-    }
-    let readableStates = JSON.parse(states);
-    let stateNameList = readableStates.map(function(state) {
-      return state.name;
-    });
-    let renderedStates = nunjucks.render('states.njk', {stateList: stateNameList});
-    res.send(renderedStates);
-  });
+ let macPath = path.join(__dirname, '../data/states.json');
+ fs.readFile(path.resolve(macPath), (err, states) => {
+   if(err) {
+     console.error(err);
+   }
+   let readableStates = JSON.parse(states);
+   let stateNameList = readableStates.map(function(state) {
+     return state.name;
+   });
+   let renderedStates = nunjucks.render('states.njk', {stateList: stateNameList});
+   res.send(renderedStates);
+   res.end();
+ });
 });
 
 //allows for shaming count on each invader to persist
