@@ -1,11 +1,14 @@
 'use strict';
 
-// npm modules
+// npm or node modules
 let request = require('superagent');
+let path = require('path');
+let fs = require('fs');
 
 // app modules
 let Router = require('express').Router;
 let Car = require('../model/cars.js');
+let State = require('../model/states.js');
 
 let router = module.exports = new Router();
 
@@ -29,6 +32,21 @@ router.get('/db/loadmakes', (req, res) => {
       newCar.save();
     });
 
+    res.json({complete: true});
+  });
+});
+
+router.get('/db/loadstates', (req, res) => {
+  fs.readFile(path.join(__dirname, '../data/states.json'), (err, states) => {
+    if(err) {
+      console.error(err);
+    }
+    let readableStates = JSON.parse(states);
+    readableStates.forEach(function(state) {
+      let newState = new State(state);
+      newState.save();
+
+    });
     res.json({complete: true});
   });
 });

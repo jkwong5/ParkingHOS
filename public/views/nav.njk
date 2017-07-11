@@ -122,6 +122,7 @@
                           <i class="fa fa-map-marker prefix"></i>
                           <div class="md-form form-sm">
                             <select name="state" id="searchState" class="form-control" required>
+                              <option value=""> ---States --- </option>
                               {% include "./states.njk" %}
 
                             </select>
@@ -154,6 +155,7 @@
                         <i class="fa fa-car prefix"></i>
                         <div class="md-form form-sm">
                           <select name="Make" id="makeSearch" class="form-control" required>
+                            <option value=""> ---Make --- </option>
                             {% include "./carmakes.njk" %}
                           </select>
                         </div>

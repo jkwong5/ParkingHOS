@@ -1,5 +1,5 @@
 let express = require('express');
-let cloudinary = require('cloudinary');
+//let cloudinary = require('cloudinary');
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let path = require('path');
@@ -24,7 +24,7 @@ nunjucks.configure('./public/views', {
 app.set('view engine', 'nunjucks');
 
 //define monogo and connect it.
-let MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/invaders';
+let MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://localhost/invaders';
 
 mongoose.connect(MONGODB_URI);
 mongoose.Promise = Promise;
