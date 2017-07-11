@@ -24,15 +24,22 @@
 
 
   //car make dropdown menu
-  $(document).ready(function() {
+  $('#postButton').on('click', function() {
     $.ajax ({
       method: 'GET',
       url: `${__API_URL__}/cars`
     }).done(function(carMakes) {
+      console.log('carMakes');
       $('#makeBar').append(carMakes);
       $('#makeSearch').append(carMakes);
+    }).fail(function( jqXHR, textStatus, errorThrown){
+      console.log(errorThrown);
     });
   });
+
+  $('#postButton').on('click', function(){
+     console.log("clicked")
+   });
 
   //populates the drop down for models
   $('#makeBar, #makeSearch').on('change', function(e) {

@@ -11,7 +11,7 @@ let router = module.exports = new Router();
 
 //Gets all car data from Edmonds API and saves the makes into MongoDB
 router.get('/db/loadmakes', (req, res) => {
-  request.get(`https://api.edmunds.com/api/vehicle/v2/makes?view=basic&fmt=json&api_key=${process.env.EDMONDS_API_KEY}`)
+  request.get(`https://api.edmunds.com/api/vehicle/v2/makes?view=basic&fmt=json&api_key=vaphsweyh8b4zj8gbmncdkvf`)
   .end((err, response) => {
     if(err) {
       console.error(err);

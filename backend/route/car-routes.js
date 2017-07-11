@@ -10,6 +10,7 @@ let router = module.exports = new Router();
 //get array of car makes to be called on page load. used for populating "make" drop-down
 router.get('/cars', (req, res) => {
 
+  console.log('routeHit');
   let carMakeArray = [];
   Car.find({})
   .then(cars => {

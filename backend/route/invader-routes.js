@@ -47,8 +47,8 @@ router.get('/states', (req, res) => {
     let stateNameList = readableStates.map(function(state) {
       return state.name;
     });
-    let renderedStates = nunjucks.render('states.njk', {stateList: stateNameList});
-    res.send(renderedStates);
+    // let renderedStates = nunjucks.render('states.njk', {stateList: stateNameList});
+    // res.send(renderedStates);
   });
 });
 
