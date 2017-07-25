@@ -33,14 +33,17 @@ module.exports = function(passport){
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home',
-		failureRedirect: '/signup',
+		successRedirect: '/',
+		failureRedirect: '/',
 		failureFlash : true
-	}));
+	}), function(req, res) {
+		console.log('route hit');
+	}
+);
 
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res){
-		res.render('home.njk', { user: req.user });
+		res.render('home', { user: req.user });
 	});
 
 	/* Handle Logout */

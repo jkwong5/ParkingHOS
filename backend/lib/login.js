@@ -1,5 +1,11 @@
 // module.exports = function(passport, LocalStrategy){
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('../model/user');
+const bCrypt = require('bcryptjs');
+
+
 module.exports = function(passport){
+
 passport.use('login', new LocalStrategy({
     passReqToCallback : true
   },
@@ -25,8 +31,14 @@ passport.use('login', new LocalStrategy({
         // User and password both match, return user from
         // done method which will be treated like success
         return done(null, user);
-      }
-    );
-}));
+      });
 
-};
+    })
+   );
+
+
+  var isValidPassword = function(user, password){
+   return bCrypt.compareSync(password, user.password);
+   }
+
+     }
