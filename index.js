@@ -8,11 +8,16 @@ let loadRoutes = require('./backend/route/db-load-routes.js');
 let carRoutes = require('./backend/route/car-routes.js');
 let searchRoutes = require('./backend/route/search-routes.js');
 let errorMiddleWare = require('./backend/lib/error.js');
+let loginMiddleWare = require('./backend/lib/auth.js');
 let cors = require('cors');
 let nunjucks = require('nunjucks');
+let passport = require('passport');
+let LocalStrategy = require('passport-local');
+let initPassport = require('./backend/lib/init.js');
+let expressSession = require('express-session');
 
 let app = express();
-
+initPassport(passport);
 let PORT = process.env.PORT || 3000;
 
 // Nunjucks templating setup
@@ -30,6 +35,9 @@ mongoose.connect(MONGODB_URI);
 mongoose.Promise = Promise;
 
 //mouting routes and middlware
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(morgan('dev'));
 app.use(cors());
 app.use(errorMiddleWare);
@@ -43,6 +51,8 @@ app.use('/static', express.static(path.join(__dirname, '/public')));
 app.get('/', (req, res) => {
   res.render('home.njk');
 });
+
+// require('./backend/lib/login.js')(passport, LocalStrategy);
 
 app.listen(PORT, function() {
   console.log('Listening on port: ', PORT);
