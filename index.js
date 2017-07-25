@@ -29,7 +29,7 @@ nunjucks.configure('./public/views', {
 app.set('view engine', 'nunjucks');
 
 //define monogo and connect it.
-let MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://heroku_kxg25cjm:l8ig59tklpkiahq0tf44mm72i0@ds127842.mlab.com:27842/heroku_kxg25cjm';
+let MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://localhost/invaders';
 
 mongoose.connect(MONGODB_URI);
 mongoose.Promise = Promise;
