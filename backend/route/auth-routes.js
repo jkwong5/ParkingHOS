@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const User = require('../model/user');
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler
@@ -32,14 +34,20 @@ module.exports = function(passport){
 	});
 
 	/* Handle Registration POST */
-	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/',
-		failureRedirect: '/',
-		failureFlash : true
-	}), function(req, res) {
-		console.log('route hit');
-	}
-);
+	router.post('/signup', (req, res, next) => {
+		let user = new User(req.body)
+		user.hashPassword(user.password)
+		.then(user => user.save())
+
+		passport.authenticate('local')(req, res, () => {
+	  	req.session.save((err) => {
+				if (err) {
+					return next(err);
+				}
+				res.redirect('/');
+	        });
+	    });
+	});
 
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res){
