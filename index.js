@@ -1,18 +1,23 @@
-let express = require('express');
-//let cloudinary = require('cloudinary');
-let mongoose = require('mongoose');
-let morgan = require('morgan');
-let path = require('path');
-let invaderRoutes = require('./backend/route/invader-routes.js');
-let loadRoutes = require('./backend/route/db-load-routes.js');
-let carRoutes = require('./backend/route/car-routes.js');
-let searchRoutes = require('./backend/route/search-routes.js');
-let errorMiddleWare = require('./backend/lib/error.js');
-let cors = require('cors');
-let nunjucks = require('nunjucks');
+const express = require('express');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const path = require('path');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+const invaderRoutes = require('./backend/route/invader-routes.js');
+const loadRoutes = require('./backend/route/db-load-routes.js');
+const carRoutes = require('./backend/route/car-routes.js');
+const searchRoutes = require('./backend/route/search-routes.js');
+const authRoutes = require('./backend/route/auth-routes.js');
+const errorMiddleWare = require('./backend/lib/error.js');
+const cors = require('cors');
+const nunjucks = require('nunjucks');
+const expressSession = require('express-session');
+const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
+
 
 let app = express();
-
 let PORT = process.env.PORT || 3000;
 
 // Nunjucks templating setup
@@ -24,15 +29,32 @@ nunjucks.configure('./public/views', {
 app.set('view engine', 'nunjucks');
 
 //define monogo and connect it.
-let MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://heroku_kxg25cjm:l8ig59tklpkiahq0tf44mm72i0@ds127842.mlab.com:27842/heroku_kxg25cjm';
+let MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://localhost/invaders';
 
 mongoose.connect(MONGODB_URI);
 mongoose.Promise = Promise;
 
+// passport config
+let User = require('./backend/model/user');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 //mouting routes and middlware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(morgan('dev'));
 app.use(cors());
 app.use(errorMiddleWare);
+app.use(authRoutes);
 app.use(loadRoutes);
 app.use(invaderRoutes);
 app.use(carRoutes);
