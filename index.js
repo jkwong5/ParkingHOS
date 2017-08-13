@@ -10,9 +10,9 @@ const carRoutes = require('./backend/route/car-routes.js');
 const searchRoutes = require('./backend/route/search-routes.js');
 const authRoutes = require('./backend/route/auth-routes.js');
 const errorMiddleWare = require('./backend/lib/error.js');
+const User = require('./backend/model/user');
 const cors = require('cors');
 const nunjucks = require('nunjucks');
-const expressSession = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
 
@@ -35,7 +35,6 @@ mongoose.connect(MONGODB_URI);
 mongoose.Promise = Promise;
 
 // passport config
-let User = require('./backend/model/user');
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
