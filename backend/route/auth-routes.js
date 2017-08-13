@@ -1,6 +1,9 @@
+/*jshint esversion: 6*/
+
+
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
+//const passport = require('passport');
 const User = require('../model/user');
 
 var isAuthenticated = function (req, res, next) {
@@ -21,23 +24,31 @@ module.exports = function(passport){
 		res.render('index', { message: req.flash('message') });
 	});
 
-	/* Handle Login POST */
-	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/home',
-		failureRedirect: '/',
-		failureFlash : true
-	}));
+	/* Handle Login GET */
+	router.get('/login',
+	  passport.authenticate('local', { failureRedirect: '/nope' }),
+	  function(req, res) {
+	    console.log(req.user);
+	    res.redirect('/');
+	  });
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
 		res.render('register',{message: req.flash('message')});
 	});
 
+	/*
+		router.get('/login', passport.authenticate('local'), function(req, res) {
+			console.log('made it into login get route');
+	    res.json(req.user);
+	  });
+*/
+
 	/* Handle Registration POST */
 	router.post('/signup', (req, res, next) => {
 		let user = new User(req.body)
-		user.hashPassword(user.password)
-		.then(user => user.save())
+		//user.hashPassword(user.password)
+		user.save()
 
 		passport.authenticate('local')(req, res, () => {
 	  	req.session.save((err) => {

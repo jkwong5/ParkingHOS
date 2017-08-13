@@ -1,44 +1,41 @@
 // module.exports = function(passport, LocalStrategy){
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../model/user');
-const bCrypt = require('bcryptjs');
+const passport = require('passport')
+const Router = require('express').Router;
 
+//const bCrypt = require('bcryptjs');
 
-module.exports = function(passport){
+//Server Side
+const router = module.exports = new Router()
 
-passport.use('login', new LocalStrategy({
-    passReqToCallback : true
-  },
-  function(req, username, password, done) {
-    // check in mongo if a user with username exists or not
-    User.findOne({ 'username' :  username },
-      function(err, user) {
-        // In case of any error, return using the done method
-        if (err)
-          return done(err);
-        // Username does not exist, log error & redirect back
-        if (!user){
-          console.log('User Not Found with username '+username);
-          return done(null, false,
-                req.flash('message', 'User Not found.'));
-        }
-        // User exists but wrong password, log the error
-        if (!isValidPassword(user, password)){
-          console.log('Invalid Password');
-          return done(null, false,
-              req.flash('message', 'Invalid Password'));
-        }
-        // User and password both match, return user from
-        // done method which will be treated like success
-        return done(null, user);
+router.post('/login', (req, res, next) => {
+  const validationResult = validateLoginForm(req.body);
+  if (!validationResult.success) {
+      return res.status(400).json({
+        success: false,
+        message: validationResult.message,
+        errors: validationResult.errors
       });
-
-    })
-   );
-
-
-  var isValidPassword = function(user, password){
-   return bCrypt.compareSync(password, user.password);
-   }
-
-     }
+    }
+    return passport.authenticate('local-login', (err, token, userData) => {
+      if (err) {
+        if (err.name === 'IncorrectCredentialsError') {
+          return res.status(400).json({
+            success: false,
+            message: err.message
+          });
+        }
+        return res.status(400).json({
+          success: false,
+          message: 'Could not process the form.'
+        });
+      }
+      return res.json({
+        success: true,
+        message: 'You have successfully logged in!',
+        token,
+        user: userData
+      });
+    })(req, res, next);
+  });
