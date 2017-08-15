@@ -8,8 +8,9 @@
    //register a user
   $('#userRegistration').on('submit', function(e) {
     e.preventDefault();
-    console.log($('#regEmail').val());
-    if ($('#regPassword').val() ==! $('#regPasswordRepeat').val()) {
+    let firstPass = $('#regPassword').val();
+    let repeatPass = $('#regPasswordRepeat').val();
+    if (firstPass !== repeatPass) {
       alert('passwords must match');
       return;
     }
@@ -18,18 +19,18 @@
       url: `${__API_URL__}/signup`,
       data: JSON.stringify({
         'username': $('#regEmail').val(),
-        'password': $('#regPassword').val()
+        'password': firstPass
       }),
-      contentType:'application/json; charset=utf-8',
-      dataType:'json'
-    }).done(function(user) {
+      contentType:'application/json; charset=utf-8'
+    }).done(function(userHtml) {
       $('#regEmail').val('');
       $('#regPassword').val('');
       $('#regPasswordRepeat').val('');
       $('#modalLRForm').modal('toggle');
-      console.log(`${user.username} has been created`);
+      $('#authedNav').append(userHtml);
+      $('#unauthedNav').hide()
     }).fail(function() {
-      alert('please enter valid email address');
+      alert('please insert valid email address');
     });
   });
 })();

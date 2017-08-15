@@ -2,6 +2,7 @@ const Router = require('express').Router;
 const User = require('../model/user');
 const passport = require('passport');
 const createError = require('http-errors')
+const nunjucks = require('nunjucks');
 
 let router = module.exports = new Router();
 
@@ -20,7 +21,8 @@ router.post('/signup', function(req, res, next) {
         return;
       }
       passport.authenticate('local')(req, res, function () {
-        res.json(user);
+        let regUserPage = nunjucks.render('auth.njk', {user: user.username});
+        res.send(regUserPage);
       });
     })
   } else {
