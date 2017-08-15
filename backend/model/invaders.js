@@ -1,7 +1,6 @@
 'use strict';
 
 var mongoose = require('mongoose');
-// var createError = require('http-errors');
 
 var invaderSchema = mongoose.Schema({
   date: {type: Date, default: Date.now},
@@ -12,6 +11,8 @@ var invaderSchema = mongoose.Schema({
   model: {type: String, ref: 'cars'},
   shame: {type: Number, default: 0}
 });
+
+
 
 
 module.exports = mongoose.model('invaders', invaderSchema);

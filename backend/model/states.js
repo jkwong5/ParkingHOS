@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var createError = require('http-errors');
+//var createError = require('http-errors');
 
 var stateSchema = mongoose.Schema({
   name: {type: String},

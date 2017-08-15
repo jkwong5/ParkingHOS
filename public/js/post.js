@@ -1,9 +1,9 @@
 
-(function(module) {
+(function() {
 
-  let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
+  //let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
-  // let __API_URL__ = 'http://localhost:3000';
+   let __API_URL__ = 'http://localhost:3000';
 
   let pic_url;
   let carMake;
@@ -12,38 +12,37 @@
   let lic_state;
 
 //drop-down menu for list of US states
-  $('#postButton').on('click', function(e) {
-    e.preventDefault();
-    $('#stateBar').empty();
+  $(document).ready(function() {
     $.ajax({
       method: 'GET',
       url: `${__API_URL__}/states`
     }).done(function(stateNames) {
       $('#stateBar').append(stateNames);
+      $('#searchState').append(stateNames);
     });
   });
 
 
   //car make dropdown menu
-  $('#postButton').on('click', function() {
-    $('.cloudinary-thumbnails').empty();
+  $(document).ready(function() {
     $.ajax ({
       method: 'GET',
       url: `${__API_URL__}/cars`
     }).done(function(carMakes) {
       $('#makeBar').append(carMakes);
+      $('#makeSearch').append(carMakes);
     });
   });
 
   //populates the drop down for models
-  $('#makeBar').on('change', function() {
-    let carMake = $('#makeBar').val();
-    $('#modelBar').empty();
+  $('#makeBar, #makeSearch').on('change', function(e) {
+    let carMake = e.target.value;
+    $('#modelBar, #modelSearch').empty();
     $.ajax({
       method: 'GET',
       url: `${__API_URL__}/cars/${carMake}`
     }).done(function(carModels) {
-      $('#modelBar').append(carModels);
+      $('#modelBar, #modelSearch').append(carModels);
     });
   });
 
@@ -97,4 +96,4 @@
     });
   });
 
-})(window);
+})();
