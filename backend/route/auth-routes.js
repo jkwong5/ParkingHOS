@@ -38,4 +38,24 @@ router.get('/logout', function(req, res){
 //passport will give a 401 unauthorized error by default is login is not successful
 router.post('/login', passport.authenticate('local'), function(req, res) {
   res.json(req.user);
+  console.log('loggedin');
+});
+
+router.post('/login', function(req, res, next) {
+  User.authenticate()(req.body.username, req.body.password, function (err, user, options) {
+    if (err) return next(err);
+    if (user === false) {
+      res.send({
+        message: options.message,
+        success: false
+      });
+    } else {
+      req.login(user, function (err) {
+        res.send({
+          success: true,
+          user: user
+        });
+      });
+    }
+  });
 });
