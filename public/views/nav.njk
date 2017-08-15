@@ -10,15 +10,11 @@
                 <li class="nav-item active">
                     <a class="nav-link">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="unauthedNav">
                     <a class="nav-link" data-toggle="modal" data-target="#modalLRForm">Login/Register</a>
                 </li>
-                <li class="nav-item btn-group">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item">Profile</a>
-                        <a class="dropdown-item">Logout</a>
-                    </div>
+                <li class="nav-item btn-group" id="authedNav">
+                  {% include "./auth.njk" %}
                 </li>
             </ul>
                 <a class="nav-link waves-effect waves-light fa fa-search prefix" id="search" data-toggle="modal" data-target="#modalRRForm"></a>
