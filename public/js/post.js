@@ -1,7 +1,7 @@
 
 (function() {
 
-  let __API_URL__ = process.env.LOCAL_URL || 'https://parking-hall-of-shame.herokuapp.com';
+  let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
   let pic_url;
   let carMake;
