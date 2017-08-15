@@ -1,9 +1,7 @@
 
 (function() {
 
-  //let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
-
-  let __API_URL__ = 'http://localhost:3000';
+  let __API_URL__ = process.env.LOCAL_URL || 'https://parking-hall-of-shame.herokuapp.com';
 
    //register a user
   $('#userRegistration').on('submit', function(e) {
@@ -33,4 +31,9 @@
       alert('please insert valid email address');
     });
   });
+
+$('#logout').on('click', function(e) {
+  e.preventDefault();
+});
+
 })();
