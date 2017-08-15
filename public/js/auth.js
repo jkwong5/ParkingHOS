@@ -3,8 +3,6 @@
 
   let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
-  //let __API_URL__ = 'http://localhost:3000';
-
    //register a user
   $('#userRegistration').on('submit', function(e) {
     e.preventDefault();
@@ -33,4 +31,30 @@
       alert('please insert valid email address');
     });
   });
+
+$('#logout').on('click', function(e) {
+  e.preventDefault();
+});
+
+//login a user
+$('#loginForm').on('submit', function(e) {
+  e.preventDefault();
+  let loginEmail = $('#loginEmail').val();
+  let loginPassword = $('#loginPassword').val();
+  $.ajax ({
+    type: 'POST',
+    url: `${__API_URL__}/login`,
+    data: JSON.stringify({
+      'username': loginEmail,
+      'password': loginPassword
+    }),
+    contentType:'application/json; charset=utf-8'
+  })
+.done(function(user){
+console.log("successful login");
+})
+.fail(function(){
+  console.log("fail");
+});
+});
 })();
