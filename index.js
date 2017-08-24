@@ -27,6 +27,7 @@ nunjucks.configure('./public/views', {
 });
 
 app.set('view engine', 'nunjucks');
+app.set('trust proxy', 1);
 
 //define monogo and connect it.
 let MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://localhost/invaders';
@@ -43,9 +44,9 @@ passport.deserializeUser(User.deserializeUser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
+  secret: process.env.EXPRESS_SES_SECRET,
+  saveUninitialized: true,
+  cookie: { secure: true }
 }));
 app.use(flash());
 app.use(passport.initialize());
@@ -62,6 +63,10 @@ app.use(searchRoutes);
 app.use('/static', express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
+  // if(req.session.views) {
+  //   console.log('yes there be views');
+  //   console.log(req.session); TODO: figure out how to preserve log-in after a refresh. potentially use localStorage. 
+  // }
   res.render('home.njk');
 });
 

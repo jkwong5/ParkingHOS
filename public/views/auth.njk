@@ -1,6 +1,8 @@
 {# This template will conditionally display if there is a user object i.e. only for an authenticated user #}
 
-{% if user %}
+<div id = "authSection">
+
+  {% if user %}
 
 <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -9,4 +11,11 @@
   <a class="dropdown-item" href="/logout" id="logout">Logout</a>
 </div>
 
+{% else %}
+
+<a class="nav-link" data-toggle="modal" data-target="#modalLRForm">Login/Register</a>
+
+
 {% endif %}
+
+</div>
