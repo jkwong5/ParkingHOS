@@ -30,8 +30,8 @@ router.post('/signup', function(req, res, next) {
   }
 });
 
-
 router.get('/logout', function(req, res){
+  req.logout();
   req.session.destroy();
   res.redirect('/');
 });
@@ -39,6 +39,7 @@ router.get('/logout', function(req, res){
 //passport will give a 401 unauthorized error by default is login is not successful
 router.post('/login', passport.authenticate('local'), function(req, res) {
   let loggedinUserPage = nunjucks.render('auth.njk', {user: req.user.username});
+  console.log(req.session.id);
   //console.log(req.session.passport);
   res.send(loggedinUserPage);
 });

@@ -35,10 +35,6 @@
     });
   });
 
-  $('#logout').on('click', function(e) {
-    e.preventDefault();
-  });
-
 //login a user
   $('#loginForm').on('submit', function(e) {
     e.preventDefault();

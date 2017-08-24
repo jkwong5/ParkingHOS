@@ -8,14 +8,15 @@
 ### Mobile View
 ![image of main UI](https://i.imgur.com/0MkLkss.png)
 
-### Current User capabilities (as of June 19, 2017):
+### Current User capabilities (as of August 24, 2017):
  - Submit a space invader with picture evidence
  - look through the library of space invaders
- - Add shame to any individual space invaders
+ - Add shame to any individual space invader
+ - search and filter for specific invaders
+ - Register and login as a user with basic authentication
 
 ### *Coming soon* ###
-- Oauth user authentication
-- Search and filter for specific invaders
+- Oauth2 user authentication
 
 ### *Coming eventually* ###
 - Google Maps API integration to determine space invader hotspots
@@ -26,7 +27,7 @@
 
 ## Models
 
-- #### User Model (*Soon to be implemented*)
+- #### User Model
   -   Username (unique)
   -   Password
   -   Email (unique)
