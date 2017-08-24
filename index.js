@@ -15,6 +15,9 @@ const cors = require('cors');
 const nunjucks = require('nunjucks');
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
+const expressSession = require('express-session');
+const MongoStore = require('connect-mongo')(expressSession);
+
 
 
 let app = express();
@@ -27,7 +30,7 @@ nunjucks.configure('./public/views', {
 });
 
 app.set('view engine', 'nunjucks');
-app.set('trust proxy', 1);
+//app.set('trust proxy', 1);
 
 //define monogo and connect it.
 let MONGODB_URI =  process.env.MONGODB_URI || 'mongodb://localhost/invaders';
@@ -43,11 +46,14 @@ passport.deserializeUser(User.deserializeUser());
 //mouting routes and middlware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(require('express-session')({
-  secret: process.env.EXPRESS_SES_SECRET,
-  saveUninitialized: true,
-  cookie: { secure: true }
+
+app.use(expressSession({
+  secret: process.env.EXPRESS_SES_SECRET || 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -62,12 +68,12 @@ app.use(searchRoutes);
 
 app.use('/static', express.static(path.join(__dirname, '/public')));
 
-app.get('/', (req, res) => {
-  // if(req.session.views) {
-  //   console.log('yes there be views');
-  //   console.log(req.session); TODO: figure out how to preserve log-in after a refresh. potentially use localStorage. 
-  // }
-  res.render('home.njk');
+app.get('/', function (req, res) {
+  if(req.isAuthenticated()) {
+    res.render('home.njk', {user: req.user.username});
+  } else {
+    res.render('home.njk');
+  }
 });
 
 app.listen(PORT, function() {
