@@ -3,6 +3,9 @@
 
   let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
+  //let __API_URL__ = 'http://localhost:3000';
+
+
    //register a user
   $('#userRegistration').on('submit', function(e) {
     e.preventDefault();
@@ -25,36 +28,37 @@
       $('#regPassword').val('');
       $('#regPasswordRepeat').val('');
       $('#modalLRForm').modal('toggle');
+      $('#authSection').remove(); //forces authenticated section to re-render
       $('#authedNav').append(userHtml);
-      $('#unauthedNav').hide()
     }).fail(function() {
       alert('please insert valid email address');
     });
   });
 
-$('#logout').on('click', function(e) {
-  e.preventDefault();
-});
-
 //login a user
-$('#loginForm').on('submit', function(e) {
-  e.preventDefault();
-  let loginEmail = $('#loginEmail').val();
-  let loginPassword = $('#loginPassword').val();
-  $.ajax ({
-    type: 'POST',
-    url: `${__API_URL__}/login`,
-    data: JSON.stringify({
-      'username': loginEmail,
-      'password': loginPassword
-    }),
-    contentType:'application/json; charset=utf-8'
+  $('#loginForm').on('submit', function(e) {
+    e.preventDefault();
+    let loginEmail = $('#loginEmail').val();
+    let loginPassword = $('#loginPassword').val();
+    $.ajax ({
+      type: 'POST',
+      url: `${__API_URL__}/login`,
+      data: JSON.stringify({
+        'username': loginEmail,
+        'password': loginPassword
+      }),
+      contentType:'application/json; charset=utf-8'
+    })
+  .done(function(userHtml){
+    console.log(userHtml);
+    $('#modalLRForm').modal('toggle');
+    $('#authSection').remove();
+    $('#authedNav').append(userHtml);
+
   })
-.done(function(user){
-console.log("successful login");
-})
-.fail(function(){
-  console.log("fail");
-});
-});
+  .fail(function(){
+    alert('incorrect username or password');
+    console.log('login unsuccessful');
+  });
+  });
 })();
