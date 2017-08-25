@@ -94,6 +94,9 @@
       $('#lic_plate_input').val('');
       $('#makeBar').empty();
       $('#modalInputForm').modal('toggle');
+    })
+    .fail(function() {
+      alert('Please Log in to Submit Invader');
     });
   });
 

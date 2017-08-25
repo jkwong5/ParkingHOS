@@ -10,6 +10,8 @@
   let carModel;
   let lic_state;
 
+
+
 //updates the value of the carMake variable
   $('#makeSearch').on('change', function() {
     carMake = $('#makeSearch').val();
@@ -38,6 +40,7 @@
       alert('Invader Not Found');
     });
   });
+
 
   //search by state
   $('#searchStateBtn').on('click', function() {
