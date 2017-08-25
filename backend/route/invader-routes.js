@@ -13,18 +13,22 @@ let router = module.exports = new Router();
 
 //submits an invader to mongoDB
 router.post('/submit', jsonParser, (req, res, next) => {
-  new Invader(req.body).save()
-  .then(invader => {
-    let pltAndState = invader.lic_plate.concat(invader.lic_state);
-    let query = {plateAndState: pltAndState};
-    Driver.findOneAndUpdate(query,
-      { '$push': { 'parkingInstances': invader._id } },
-      {upsert:true}, function(err, doc) {
-        if (err) return res.send(500, { error: err });
-        res.json(doc);
-      });
-  })
-  .catch(next);
+  if (req.isAuthenticated()) {
+    new Invader(req.body).save()
+    .then(invader => {
+      let pltAndState = invader.lic_plate.concat(invader.lic_state);
+      let query = {plateAndState: pltAndState};
+      Driver.findOneAndUpdate(query,
+        { '$push': { 'parkingInstances': invader._id } },
+        {upsert:true}, function(err, doc) {
+          if (err) return res.send(500, { error: err });
+          res.json(doc);
+        });
+    })
+      .catch(next);
+  } else {
+    next(createError(401, 'not authorized'));
+  }
 });
 
 //renders all the invaders in the database
