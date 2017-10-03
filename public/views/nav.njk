@@ -57,12 +57,27 @@
                         </div>
                         <div class="modal-footer display-footer">
                             <div class="options text-center text-md-right mt-1">
-                                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
+                                <p class="darken-3" role="tablist"><a href="#panel12" class="blue-text" data-toggle="tab" role="tab">Forgot Password?</a></p>
                                 {# <p>Forgot <a href="#" class="blue-text">Password?</a></p> #}
                             </div>
                             <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
                         </div>
                     </div>
+
+                    {# Forgot modal #}
+                        <div class="tab-pane fade" id="panel12" role="tabpanel">
+                          <form>
+                            <div class="modal-body">
+                              <i class="fa fa-envelope prefix"></i>
+                                  <label for="email">Enter your email to reset password.</label>
+                                  <input type="email" name="email" id="email" class="form-control" required>
+                                  <input type="submit" class="btn btn-info" name="submit" id="forgotPW" value="Send">
+                            </div>
+                          </form>
+                            <div class="modal-footer display-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
+                            </div>
+                        </div>
 
                     {# Registration Modal #}
                     <div class="tab-pane fade" id="panel8" role="tabpanel">
@@ -90,7 +105,7 @@
                       </form>
                         <div class="modal-footer">
                             <div class="options text-right">
-                                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                                <p class="pt-1 nav-tabs darken-3" role="tablist">Already have an account? <a href="#panel7" class="blue-text" data-toggle="tab" role="tab">Log In</a></p>
                             </div>
                             <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
                         </div>

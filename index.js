@@ -17,7 +17,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
-
+const bcrypt = require('bcrypt');
 
 
 let app = express();

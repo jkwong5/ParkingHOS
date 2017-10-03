@@ -1,4 +1,3 @@
-
 (function() {
 
   let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
@@ -61,4 +60,59 @@
     console.log('login unsuccessful');
   });
   });
-})();
+
+
+
+  var forgotPasswordClickEvt = document.getElementById('forgotPW');
+  forgotPasswordClickEvt.addEventListener('click', forgotPasswordClicked);
+  function forgotPasswordClicked(event) {
+      event.preventDefault();
+      var data = "email=" + document.getElementById('email').value;
+      ajaxCall(data, "http://localhost:3000/forgot_password", function(status, response) {
+          if (status == 200) {
+              alert('successfully sent');
+          } else {
+              alert('Error', status)
+          }
+      });
+  }
+  function ajaxCall(data, url, callback) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", url, true);
+      xhttp.onreadystatechange = function() {
+          if (this.readyState == 4) {
+              return callback(this.status, JSON.parse(xhttp.response));
+          }
+      }
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(data);
+  }
+
+  $('#resetPW').on('click', function(e) {
+    e.preventDefault();
+    var token = document.location.href.split('token=')[1];
+    var data = "newPassword=" + document.getElementById('newPassword').value + '&verifyPassword=' + document.getElementById('verifyPassword').value + '&token=' + token;
+    $.ajax({
+      url: `${__API_URL__}/reset_password`,
+      method: 'GET'
+    })
+    .done(function(){
+      alert('successfully sent');
+    })
+    .fail(function(){
+      alert('Error', status)
+    });
+    function ajaxCall(data, url, callback){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", url, true);
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                return callback(this.status, JSON.parse(xhttp.response));
+            }
+        };
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send(data);
+    }
+  });
+
+});

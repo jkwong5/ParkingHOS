@@ -43,3 +43,26 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   //console.log(req.session.passport);
   res.send(loggedinUserPage);
 });
+
+
+//jwt password reset
+// router.post('/forgot', userHandlers.forgot_password(), function(req, res) {
+//   let forgotPasswordPage = nunjucks.render('forgot.njk');
+//   res.send(forgotPasswordPage);
+// });
+
+router.post('/forgot_password', function(req, res, next) {
+  User.forgot_password();
+});
+
+router.post('/reset_password', function(req, res, next) {
+  User.reset_password();
+});
+
+// router.route('/forgot_password')
+//   .get(User.render_forgot_password_template)
+//   .post(User.forgot_password);
+//
+// router.route('/reset_password')
+//   .get(User.render_reset_password_template)
+//   .post(User.reset_password);
