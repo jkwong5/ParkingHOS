@@ -22,3 +22,8 @@ div.col-md-3 {
  a.cloudinary-button {
   -webkit-border-radius: 2px;
  }
+
+ #mapGoesHere {
+   width: 500px;
+   height: 400px;
+ }

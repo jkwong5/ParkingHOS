@@ -1,9 +1,9 @@
 
 (function() {
 
-  let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
+  //let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
-  //let __API_URL__ = 'http://localhost:3000';
+  let __API_URL__ = 'http://localhost:3000';
 
 
   let carMake;

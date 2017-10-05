@@ -1,9 +1,9 @@
 
 (function() {
 
-  let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
+  //let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
-  //let __API_URL__ = 'http://localhost:3000';
+  let __API_URL__ = 'http://localhost:3000';
 
 
   let pic_url;
@@ -11,6 +11,8 @@
   let carModel;
   let lic_plate;
   let lic_state;
+  var lat;
+  var lng;
 
 //drop-down menu for list of US states
   $(document).ready(function() {
@@ -46,6 +48,40 @@
       $('#modelBar, #modelSearch').append(carModels);
     });
   });
+
+//Google Map functionality for input form-data
+$(document).ready(function() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        console.log(lat);
+        console.log(lng);
+      });
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+});
+
+$(document).ready(function() {
+  $('#postButton').on('click', function() {
+    var myLatlng = new google.maps.LatLng(lat, lng);
+    var myOptions = {
+      zoom: 4,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    map = new google.maps.Map($('#mapGoesHere'), myOptions);
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title:"Fast marker"
+    });
+  })
+})
+
+
 
 //updates the value of the carMake variable
   $('#makeBar').on('change', function() {

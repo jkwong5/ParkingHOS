@@ -1,9 +1,9 @@
 
 (function() {
 
-  let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
+  //let __API_URL__ = 'https://parking-hall-of-shame.herokuapp.com';
 
-  //let __API_URL__ = 'http://localhost:3000';
+let __API_URL__ = 'http://localhost:3000';
 
 
    //register a user
@@ -35,7 +35,7 @@
     });
   });
 
-//login a user
+//login a user with local authentication
   $('#loginForm').on('submit', function(e) {
     e.preventDefault();
     let loginEmail = $('#loginEmail').val();
@@ -60,5 +60,23 @@
     alert('incorrect username or password');
     console.log('login unsuccessful');
   });
+  });
+
+  //log in a user with Google with Oauth2
+
+  $('#loginGoogle').on('click', function() {
+    $.ajax ({
+      type: 'GET',
+      url: `${__API_URL__}/auth/google`,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
+    })
+    .done(function(user) {
+      console.log(user);
+    })
+    .fail(function(err) {
+      console.log(err);
+    });
   });
 })();

@@ -14,6 +14,7 @@ const User = require('./backend/model/user');
 const cors = require('cors');
 const nunjucks = require('nunjucks');
 const LocalStrategy = require('passport-local').Strategy;
+//var GoogleStrategy = require('passport-google-oauth20').Strategy;
 const flash = require('connect-flash');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
@@ -22,6 +23,8 @@ const MongoStore = require('connect-mongo')(expressSession);
 
 let app = express();
 let PORT = process.env.PORT || 3000;
+app.use(cors());
+
 
 // Nunjucks templating setup
 nunjucks.configure('./public/views', {
@@ -43,6 +46,49 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+/*
+//passport config for Google Oauth2
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: 'http://localhost:3000/auth/google/callback'
+},
+function(token, refreshToken, profile, done) {
+  // make the code asynchronous
+    // User.findOne won't fire until we have all our data back from Google
+  process.nextTick(function() {
+
+    // try to find the user based on their google id
+    User.findOne({ 'google.id' : profile.id }, function(err, user) {
+      if (err)
+        return done(err);
+
+      if (user) {
+      // if a user is found, log them in
+        return done(null, user);
+      } else {
+      // if the user isnt in our database, create a new user
+        var newUser = new User();
+
+        // set all of the relevant information
+        newUser.google.id    = profile.id;
+        newUser.google.token = token;
+        newUser.google.name  = profile.displayName;
+        newUser.google.email = profile.emails[0].value; // pull the first email
+
+        // save the user
+        newUser.save(function(err) {
+          if (err)
+            throw err;
+          return done(null, newUser);
+        });
+      }
+    });
+  });
+
+}));
+*/
+
 //mouting routes and middlware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -58,7 +104,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('dev'));
-app.use(cors());
 app.use(errorMiddleWare);
 app.use(authRoutes);
 app.use(loadRoutes);

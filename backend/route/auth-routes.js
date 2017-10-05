@@ -43,3 +43,36 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   //console.log(req.session.passport);
   res.send(loggedinUserPage);
 });
+
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+  if (req.isAuthenticated())
+    return next();
+
+    // if they aren't redirect them to the home page
+  res.redirect('/');
+}
+
+
+// router.get('/auth/google',
+//   passport.authenticate('google', { scope: ['email'] }));
+//
+//
+// router.get('/auth/google/callback',
+//   passport.authenticate('google', { failureRedirect: '/' }),
+//   function(req, res) {
+//     console.log('success with the callback');
+//     console.log(req.user);
+//     res.redirect('/');
+//   });
+
+
+router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+   // the callback after google has authenticated the user
+router.get('/auth/google/callback',
+  passport.authenticate('google', {
+    successRedirect : '/',
+    failureRedirect : 'https://google.com'
+  }));
