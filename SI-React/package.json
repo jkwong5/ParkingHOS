@@ -1,7 +1,7 @@
 {
   "name": "mdbreact",
   "version": "4.0.0-alpha",
-  "author": "MDBootstrap",
+  "author": "Jacob Isenberg and Jon Wong. Bootstrap styling materials from MDBootstrap",
   "license": "MIT",
   "repository": "https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design",
   "dependencies": {
@@ -13,10 +13,13 @@
     "react-dom": "^15.6.1",
     "react-motion-ui-pack": "^0.10.3",
     "react-popper": "^0.7.2",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.0",
     "react-scripts": "1.0.11",
     "react-toastify": "^2.0.0-rc.3",
-    "react-transition-group": "^1.2.0"
+    "react-transition-group": "^1.2.0",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "webpack-dev-server --open",

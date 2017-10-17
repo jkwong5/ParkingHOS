@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 const config = {
-  entry: './docs/index.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -11,7 +11,7 @@ const config = {
   },
   resolve: {
     alias: {
-      mdbreact: path.resolve('./src/index')
+      mdbreact: path.resolve('./src/items')
     }
   },
   module: {
