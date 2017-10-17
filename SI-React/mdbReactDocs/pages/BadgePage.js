@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge } from 'mdbreact';
 
-
+//
 const BadgePage = (props) => {
   return(
     <div className="container-fluid text-center">
